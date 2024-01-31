@@ -1,4 +1,4 @@
-# Hack.Diversity Tech Dive Template
+# SWE Tech Dive CRUD Project
 
 Latest checked | @Tue Jan 30 2024 19:10:36 GMT-0500 (Eastern Standard Time)
 
