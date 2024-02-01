@@ -38,3 +38,14 @@ npm start
 ```
 
 You should then be able to visit `localhost:9000` in your browser and see the server running.
+
+## MONGODB
+
+In order to configure the mongodb native drivers for node.js 5.5 or later, you'll run the following commands:
+
+```bash
+sudo npm install mongodb
+
+# connection string into your application code | xray:xray [user:password]
+mongodb+srv://xray:xray@clustermain.cu1ntt7.mongodb.net/?retryWrites=true&w=majority
+```
