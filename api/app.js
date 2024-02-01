@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter); // main home page
 app.use("/api/exams", examsRouter); //get all items in a list
 
-app.use("/users", usersRouter);
+app.use("/users", usersRouter);``
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
