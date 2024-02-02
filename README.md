@@ -49,3 +49,27 @@ sudo npm install mongodb
 # connection string into your application code | xray:xray [user:password]
 mongodb+srv://xray:xray@clustermain.cu1ntt7.mongodb.net/?retryWrites=true&w=majority
 ```
+
+## EXPRESS
+
+In order to work with express, you'll run the following commands:
+
+```bash
+sudo npm install express
+```
+
+## NODEMON
+
+In order to work with nodemon, you'll run the following commands:
+
+```bash
+sudo npm install -g nodemon
+```
+
+## DOTENV
+
+In order to work with dotenv, you'll run the following commands:
+
+```bash
+sudo npm install dotenv
+```
