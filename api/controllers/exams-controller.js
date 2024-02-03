@@ -1,7 +1,7 @@
 const Exams = require("../models/examsModels");
 const mongoose = require("mongoose");
 
-//gets all exams 
+//gets all exams
 const getAllExamsController = async (req, res) => {
   const allExams = await Exams.find({}).sort({ createdAt: -1 }); //find all exams in mongodb and sort them
   res.status(200).json(allExams);
@@ -41,7 +41,7 @@ const createExamController = async (req, res) => {
     imageURL,
   } = req.body;
 
-  //create a new instance of the object and add it to the database 
+  //create a new instance of the object and add it to the database
   try {
     const newExam = await Exams.create({
       patientId,
@@ -71,7 +71,7 @@ const deleteExamController = async (req, res) => {
   }
   //__id == mongoDB Id/ delete id === __id
   const exam = await Exams.findOneAndDelete({ _id: id });
-//if no exam, throw error
+  //if no exam, throw error
   if (!exam) {
     return res.status(400).json({ error: "No such exam" });
   }
@@ -93,14 +93,13 @@ const updateExamController = async (req, res) => {
       ...req.body,
     }
   );
-//if no exam, throw error
+  //if no exam, throw error
   if (!exam) {
     return res.status(400).json({ error: "No such exam available" });
   }
 
   res.status(200).json(exam);
 };
-
 
 module.exports = {
   getAllExamsController,
