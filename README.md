@@ -45,9 +45,6 @@ In order to configure the mongodb native drivers for node.js 5.5 or later, you'l
 
 ```bash
 sudo npm install mongodb
-
-# connection string into your application code | xray:xray [user:password]
-mongodb+srv://xray:xray@clustermain.cu1ntt7.mongodb.net/?retryWrites=true&w=majority
 ```
 
 ## EXPRESS
