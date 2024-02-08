@@ -9,7 +9,7 @@ const DetailPage = () => {
       <img></img>
 
       <p>Patient ID: </p>
-      <p> Age: </p>
+      <p>Age: </p>
       <p>Sex: </p>
       <p>BMI: </p>
       <p>Zip Code: </p>
