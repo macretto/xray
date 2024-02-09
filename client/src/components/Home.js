@@ -6,6 +6,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { Link } from 'react-router-dom';
 
 function createData(patient_id, exam_id, image, key_findings, brixia_score, age, sex, bmi, zip_code) {
   return { patient_id, exam_id, image, key_findings, brixia_score, age, sex, bmi, zip_code };
@@ -42,10 +43,13 @@ export default function DenseTable() {
               key={row.patient_id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
+              {/* Change this */}
               <TableCell align="right" component="th" scope="row">
                 {row.patient_id}
               </TableCell>
-              <TableCell align="right">{row.exam_id}</TableCell>
+              <Link to="">
+                <TableCell align="right">{row.exam_id}</TableCell>
+              </Link>
               <TableCell align="right">{row.image}</TableCell>
               <TableCell align="right">{row.key_findings}</TableCell>
               <TableCell align="right">{row.brixia_score}</TableCell>
