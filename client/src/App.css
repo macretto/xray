@@ -19,3 +19,19 @@
 .App-link {
   color: #61dafb;
 }
+
+.exam-container {
+  display: flex;
+  align-items: center;
+  /* Center vertically */
+}
+
+.text-container {
+  flex: 1;
+  padding: 20px;
+}
+
+/* change this . I want this pushed over more*/
+.image-container {
+  padding: 20px;
+}
