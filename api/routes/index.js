@@ -1,4 +1,4 @@
-var express = require('express');
+const express = require('express');     // "express": "^4.18.2"
 var router = express.Router();
 
 /* GET home page. */
