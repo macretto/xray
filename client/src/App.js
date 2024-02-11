@@ -21,7 +21,7 @@ function App() {
         <Route path="/Main" element={<Main />} />
         <Route path="/Products" element={<Products />} />
       </Routes>
-      {response}
+      {/* {response} */}
     </div>
   );
 }

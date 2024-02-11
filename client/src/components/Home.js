@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState, useEffect } from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -8,19 +9,45 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Link } from 'react-router-dom';
 
-function createData(patient_id, exam_id, image, key_findings, brixia_score, age, sex, bmi, zip_code) {
-  return { patient_id, exam_id, image, key_findings, brixia_score, age, sex, bmi, zip_code };
-}
 
-const rows = [
-  createData(98056, 78764, 'image', 'broken', 15, 25, 'M', 33, 123),
-  // hard code
-];
 
 export default function DenseTable() {
+
+
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    datas();
+  }, []);
+
+  const datas = async () => {
+    const response = await fetch('http://localhost:9000/api/exams');
+    setData(await response.json());
+  };
+
+  function createData(patientId, examId, image, keyFindings, brixiaScores, age, sex, bmi, zipCode) {
+    return { patientId, examId, image, keyFindings, brixiaScores, age, sex, bmi, zipCode };
+  }
+
+  const rows = [
+    createData(98056, 78764, 'image', 'broken', 15, 25, 'M', 33, 123),
+    // hard code
+  ];
+
+  console.log(data);
+
+
+  // const ExamData = () => {
+  //   const [exams, setExams] = useState([]);
+
+  //   React.useEffect(() => {
+  //     fetch(`http://localhost:9000/api/exams`);
+
+  //   });
+  // };
+
   return (
-
-
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
         <TableHead>
@@ -38,25 +65,25 @@ export default function DenseTable() {
         </TableHead>
         <TableBody>
           {/* Data Mapping */}
-          {rows.map((row) => (
+          {data.map((data) => (
             <TableRow
-              key={row.patient_id}
+              key={data.patient_id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               {/* Change this */}
               <TableCell align="right" component="th" scope="row">
-                {row.patient_id}
+                {data.patientId}
               </TableCell>
-              <Link to="">
-                <TableCell align="right">{row.exam_id}</TableCell>
+              <Link to="/">
+                <TableCell align="right">{data.examId}</TableCell>
               </Link>
-              <TableCell align="right">{row.image}</TableCell>
-              <TableCell align="right">{row.key_findings}</TableCell>
-              <TableCell align="right">{row.brixia_score}</TableCell>
-              <TableCell align="right">{row.age}</TableCell>
-              <TableCell align="right">{row.sex}</TableCell>
-              <TableCell align="right">{row.bmi}</TableCell>
-              <TableCell align="center">{row.zip_code}</TableCell>
+              <TableCell align="right">{data.image}</TableCell>
+              <TableCell align="right">{data.keyFindings}</TableCell>
+              <TableCell align="right">{data.brixiaScores}</TableCell>
+              <TableCell align="right">{data.age}</TableCell>
+              <TableCell align="right">{data.sex}</TableCell>
+              <TableCell align="right">{data.bmi}</TableCell>
+              <TableCell align="center">{data.zipCode}</TableCell>
             </TableRow>
           ))}
         </TableBody>
