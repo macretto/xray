@@ -44,13 +44,12 @@ export default function DenseTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {/* Data Mapping */}
+
           {data.map((data) => (
             <TableRow
               key={data.patient_id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              {/* Change this */}
               <TableCell align="center">{data.patientId}</TableCell>
               <Link to="/">
                 <TableCell align="right">{data.examId}</TableCell>
