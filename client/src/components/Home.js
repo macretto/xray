@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom';
 export default function DenseTable() {
 
   const [data, setData] = useState([]);
-
+  console.log(data);
   useEffect(() => {
     datas();
   }, []);
@@ -51,7 +51,7 @@ export default function DenseTable() {
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell align="center">{data.patientId}</TableCell>
-              <Link to="/">
+              <Link to={`/detail/${data.examId}`}>
                 <TableCell align="right">{data.examId}</TableCell>
               </Link>
               <TableCell align="right"> <img src={data.imageURL} style={{ width: '50px', height: '50px' }} /></TableCell>

@@ -1,9 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button, TextField } from "@mui/material";
-
+import { useParams } from "react-router-dom";
 
 
 const DetailPage = () => {
+  const { examId } = useParams();
+  const [examDetails, setExamDetails] = useState([]);
+
+  useEffect(() => {
+    const fetchExamDetails = async () => {
+      try {
+        const response = await fetch(`http://localhost:9000/api/exams/`);
+        const data = await response.json();
+      } catch (error) {
+        console.error('Error fetching exam details:', error);
+      }
+    };
+    fetchExamDetails();
+  }, [examId]);
+
+  // if (!examDetails) {
+  //   return <div>Loading...</div>;
+  // }
+
+  console.log(examId);
+  console.log();
+
   return (
     <div className="exam-container">
       <div className="image-container">
@@ -15,7 +37,7 @@ const DetailPage = () => {
       </div>
       <div className="text-container">
         <h1>Patient Info</h1>
-        <p>Patient ID: </p>
+        <p>Patient ID:  </p>
         <p>Age: </p>
         <p>Sex: </p>
         <p>BMI: </p>
@@ -27,6 +49,7 @@ const DetailPage = () => {
           Delete
         </Button>
       </div>
+
     </div>
   );
 };
