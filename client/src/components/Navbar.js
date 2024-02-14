@@ -21,7 +21,7 @@ import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 
 
 
-const pages = ['Exams', 'Main',];
+const pages = ['Exams', 'Main', 'Products'];
 // const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {

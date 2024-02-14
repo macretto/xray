@@ -8,7 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Link } from 'react-router-dom';
-
+import DetailPage from './DetailPage';
 
 export default function DenseTable() {
 
@@ -47,11 +47,11 @@ export default function DenseTable() {
 
           {data.map((data) => (
             <TableRow
-              key={data.patient_id}
+              key={data._id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell align="center">{data.patientId}</TableCell>
-              <Link to={`/detail/${data.examId}`}>
+              <Link to={`/detail/${data._id}`}>
                 <TableCell align="right">{data.examId}</TableCell>
               </Link>
               <TableCell align="right"> <img src={data.imageURL} style={{ width: '50px', height: '50px' }} /></TableCell>
@@ -66,5 +66,6 @@ export default function DenseTable() {
         </TableBody>
       </Table>
     </TableContainer>
+
   );
 }

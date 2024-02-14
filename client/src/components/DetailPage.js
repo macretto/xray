@@ -5,13 +5,16 @@ import { useParams } from "react-router-dom";
 
 const DetailPage = () => {
   const { examId } = useParams();
-  const [examDetails, setExamDetails] = useState([]);
+  const [examDetails, setExamDetails] = useState(null);
+  const [patientInfo, setPatientInfo] = useState('');
+  const [updateMode, setUpdateMode] = useState(false);
 
   useEffect(() => {
     const fetchExamDetails = async () => {
       try {
         const response = await fetch(`http://localhost:9000/api/exams/`);
         const data = await response.json();
+        setExamDetails(data);
       } catch (error) {
         console.error('Error fetching exam details:', error);
       }
@@ -23,8 +26,13 @@ const DetailPage = () => {
   //   return <div>Loading...</div>;
   // }
 
-  console.log(examId);
-  console.log();
+  const handleInputChange = (field, value) => {
+    setPatientInfo((prevInfo) => ({ ...prevInfo, [field]: value }));
+  };
+
+  const handleUpdate = () => {
+    setUpdateMode(false);
+  };
 
   return (
     <div className="exam-container">
@@ -43,13 +51,14 @@ const DetailPage = () => {
         <p>BMI: </p>
         <p>Zip Code: </p>
         <p>Exam ID: </p>
-        <p>Date</p>
-        <Button variant="outlined">Edit</Button>
+        <p>Date: </p>
+
+
+        <Button variant="outlined" onClick={handleUpdate}>Edit</Button>
         <Button variant="outlined" color="error">
           Delete
         </Button>
       </div>
-
     </div>
   );
 };
