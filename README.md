@@ -1,5 +1,4 @@
 # SWE Tech Dive CRUD Project
-# SWE Tech Dive CRUD Project
 
 Latest checked | @Tue Jan 30 2024 19:10:36 GMT-0500 (Eastern Standard Time)
 
@@ -39,3 +38,35 @@ npm start
 ```
 
 You should then be able to visit `localhost:9000` in your browser and see the server running.
+
+## MONGODB
+
+In order to configure the mongodb native drivers for node.js 5.5 or later, you'll run the following commands:
+
+```bash
+sudo npm install mongodb
+```
+
+## EXPRESS
+
+In order to work with express, you'll run the following commands:
+
+```bash
+sudo npm install express
+```
+
+## NODEMON
+
+In order to work with nodemon, you'll run the following commands:
+
+```bash
+sudo npm install -g nodemon
+```
+
+## DOTENV
+
+In order to work with dotenv, you'll run the following commands:
+
+```bash
+sudo npm install dotenv
+```
