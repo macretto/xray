@@ -4,7 +4,7 @@ Latest checked | @Tue Jan 30 2024 19:10:36 GMT-0500 (Eastern Standard Time)
 
 ## Getting Started
 
-This skeleton contains two different applications -- a front end, or "client," created with "Create React App," and a back end, or "API," created with Express. 
+This skeleton contains two different applications -- a front end, or "client," created with "Create React App," and a back end, or "API," created with Express.
 
 In order to make both of them work together, you'll need to run both, but you can run just one or the other to start. As you begin working on this project, you'll first focus on the client, so you can more or less ignore the API portion of the code for now.
 
@@ -16,7 +16,7 @@ In order to run the client, you'll run the following commands:
 
 ```bash
 cd client/
-sudo npm i                  # 15 vulnerabilities (7 moderate, 6 high, 2 critical) 
+sudo npm i                  # 15 vulnerabilities (7 moderate, 6 high, 2 critical)
 sudo npm audit fix          # 8 vulnerabilities (2 moderate, 6 high)
 npm install braces@2.3.1    # missing module install
 npm start
