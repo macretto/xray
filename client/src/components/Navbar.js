@@ -20,11 +20,9 @@ import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 
 
 
-
-
 const pages = ['Exams', 'Main', 'Products'];
 
-const pages = ['Exams', 'Main',];
+
 
 // const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
@@ -72,11 +70,7 @@ function ResponsiveAppBar() {
               textDecoration: 'none',
             }}
           >
-
             SG
-
-            LOGO
-
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, TextField } from "@mui/material";
 
 const Products = () => {
+  const [editMode, setEditMode] = useState(false);
   const [patientInfo, setPatientInfo] = useState({
     patientID: "123",
     age: 25,
@@ -12,32 +13,17 @@ const Products = () => {
     date: "2024-01-01",
   });
 
-  const [updateMode, setUpdateMode] = useState(false);
+  const handleEditClick = () => {
+    setEditMode(true);
+  };
+
+  const handleSaveClick = () => {
+    // Implement your save logic here
+    setEditMode(false);
+  };
 
   const handleInputChange = (field, value) => {
     setPatientInfo((prevInfo) => ({ ...prevInfo, [field]: value }));
-  };
-
-  const handleUpdate = () => {
-    try {
-      const response = await fetch(`http://localhost:9000/api/exams/${patientInfo._id}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(patientInfo``)
-      });
-      if (response.ok) {
-        console.log('Success');
-      } else {
-        console.error('Failed');
-      }
-    } catch (error) {
-      console.error('Error', error);
-    }
-    // Implement your update logic here
-    console.log("Updated Patient Info:", patientInfo);
-    setUpdateMode(false); // Turn off update mode after updating
   };
 
   return (
@@ -52,7 +38,8 @@ const Products = () => {
       </div>
       <div className="text-container">
         <h1>Patient Info</h1>
-        {updateMode && (
+
+        {editMode ? (
           <>
             <TextField
               label="Patient ID"
@@ -89,23 +76,30 @@ const Products = () => {
               value={patientInfo.date}
               onChange={(e) => handleInputChange("date", e.target.value)}
             />
+            <Button variant="outlined" onClick={handleSaveClick}>
+              Save
+            </Button>
+          </>
+        ) : (
+          <>
+            <p>Patient ID: {patientInfo.patientID} </p>
+            <p>Age: {patientInfo.age}</p>
+            <p>Sex: {patientInfo.sex} </p>
+            <p>BMI: {patientInfo.bmi}</p>
+            <p>Zip Code: {patientInfo.zipCode} </p>
+            <p>Exam ID: {patientInfo.examID} </p>
+            <p>Date: {patientInfo.date}</p>
+            <Button variant="outlined" onClick={handleEditClick}>
+              Edit
+            </Button>
+            <Button variant="outlined" color="error">
+              Delete
+            </Button>
           </>
         )}
-
-        <Button variant="outlined" onClick={handleUpdate}>
-          Update
-        </Button>
-        <Button
-          variant="outlined"
-          color="error"
-          onClick={() => setUpdateMode(!updateMode)}
-        >
-          {updateMode ? "Cancel" : "Edit"}
-        </Button>
       </div>
     </div>
   );
 };
-
 
 export default Products;

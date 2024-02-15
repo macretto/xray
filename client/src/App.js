@@ -25,12 +25,9 @@ function App() {
 
         <Route path="/detail/:id" element={<DetailPage />} />
         <Route path="/Products" element={<Products />} />
-      </Routes>
-      {/* {response} */}
-
         <Route path="/Products" element={<Products />} />
       </Routes>
-      {response}
+      {/* {response} */}
 
     </div>
   );
