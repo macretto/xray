@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, TextField } from "@mui/material";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate, useNavigation } from "react-router-dom";
+
 
 import Home from './Home';
 
@@ -18,6 +19,8 @@ const DetailPage = () => {
 
   const { id } = useParams();
   const [data, setData] = useState("");
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,9 +35,9 @@ const DetailPage = () => {
     fetchData();
   }, [id]);
 
-  // if (!data){
-  //   return <div>Loading...</div>
-  // }
+  if (!data) {
+    return <div>Loading...</div>;
+  }
 
   const handleEditClick = () => {
     setEditMode(true);
@@ -49,11 +52,33 @@ const DetailPage = () => {
     setData((prevInfo) => ({ ...prevInfo, [field]: value }));
   };
 
+  const handleDelete = async () => {
+    try {
+      const url = `http://localhost:9000/api/exams/${id}`;
+      const fetchConfig = {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      const response = await fetch(url, fetchConfig);
+      if (!response.ok) {
+        console.error(`Failed to delete exam. `);
+        return;
+      }
+      console.log(`Sucessfully deleted exam with ID ${id}`);
+      navigate("/");
+    } catch (error) {
+      console.error("Error deleting exam", error);
+    }
+  };
+
+
   return (
     <div className="exam-container">
       <div className="image-container">
         <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/React_Logo_SVG.svg/1200px-React_Logo_SVG.svg.png"
+          src={data.imageURL}
           alt="React Logo"
           width={500}
           height={500}
@@ -110,12 +135,12 @@ const DetailPage = () => {
             <p>Sex: {data.sex} </p>
             <p>BMI: {data.bmi}</p>
             <p>Zip Code: {data.zipCode} </p>
-            <p>Exam ID: {data.examID} </p>
-            <p>Date: {data.date}</p>
+            <p>Exam ID: {data.examId} </p>
+            <p>Date: {data.updatedAt}</p>
             <Button variant="outlined" onClick={handleEditClick}>
               Edit
             </Button>
-            <Button variant="outlined" color="error">
+            <Button variant="outlined" onClick={handleDelete} color="error">
               Delete
             </Button>
           </>
