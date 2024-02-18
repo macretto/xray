@@ -1,25 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Button, TextField } from "@mui/material";
-import { useParams, useNavigate, useNavigation } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 
 import Home from './Home';
 
 const DetailPage = () => {
-  const [editMode, setEditMode] = useState(false);
-  // const [patientInfo, setPatientInfo] = useState({
-  //   patientID: "123",
-  //   age: 25,
-  //   sex: "M",
-  //   bmi: 23,
-  //   zipCode: "12345",
-  //   examID: "789",
-  //   date: "2024-01-01",
-  // });
-
   const { id } = useParams();
-  const [data, setData] = useState("");
   const navigate = useNavigate();
+  const [editMode, setEditMode] = useState(false);
+  const [data, setData] = useState("");
 
 
   useEffect(() => {
