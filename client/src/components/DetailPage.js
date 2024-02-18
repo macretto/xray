@@ -43,8 +43,25 @@ const DetailPage = () => {
     setEditMode(true);
   };
 
-  const handleSaveClick = () => {
-    // Implement your save logic here
+  const handleSaveClick = async () => {
+    try {
+      const url = `http://localhost:9000/api/exams/${id}`;
+      const fetchConfig = {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data),
+      };
+      const response = await fetch(url, fetchConfig);
+
+      if (!response.ok) {
+        console.error(`Failed to update exam with ID ${id}. Status: ${response.status}`);
+        return;
+      }
+    } catch (error) {
+      console.error("error updating exam:", error);
+    }
     setEditMode(false);
   };
 
@@ -91,7 +108,7 @@ const DetailPage = () => {
           <>
             <TextField
               label="Patient ID"
-              value={data.patientID}
+              value={data.patientId}
               onChange={(e) => handleInputChange("patientID", e.target.value)}
             />
             <TextField
@@ -130,7 +147,7 @@ const DetailPage = () => {
           </>
         ) : (
           <>
-            <p>Patient ID: {data.patientID} </p>
+            <p>Patient ID: {data.patientId} </p>
             <p>Age: {data.age}</p>
             <p>Sex: {data.sex} </p>
             <p>BMI: {data.bmi}</p>
