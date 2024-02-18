@@ -1,10 +1,10 @@
 import './App.css';
 import ResponsiveAppBar from './components/Navbar';
 import { Routes, Route } from "react-router";
-import Home from './components/Home';
-import Exams from './components/Exams';
-import Main from './components/Main';
-import DetailPage from './components/DetailPage';
+import Home from './pages/Home';
+import Exams from './pages/Exams';
+import Main from './pages/Main';
+import DetailPage from './pages/DetailPage';
 
 
 import { useApi } from './hooks/use-api';
