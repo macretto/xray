@@ -6,9 +6,7 @@ import Exams from './components/Exams';
 import Main from './components/Main';
 
 import DetailPage from './components/DetailPage';
-
 import Products from './components/Products';
-
 
 import { useApi } from './hooks/use-api';
 
@@ -24,8 +22,8 @@ function App() {
         <Route path="/Main" element={<Main />} />
 
         <Route path="/detail/:id" element={<DetailPage />} />
-        <Route path="/Products" element={<Products />} />
-        <Route path="/Products" element={<Products />} />
+        {/* <Route path="/detail/:id" element={<Products />} /> */}
+        {/* <Route path="/Products" element={<Products />} /> */}
       </Routes>
       {/* {response} */}
 
