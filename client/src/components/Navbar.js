@@ -13,6 +13,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 import { Link } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 
+
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 
 
@@ -42,6 +43,7 @@ function ResponsiveAppBar() {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
+
 
   const handleSearchChange = (event) => {
     const inputValue = event.target.value.toLowerCase();
