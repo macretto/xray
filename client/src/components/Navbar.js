@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -11,21 +11,30 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { Link } from 'react-router-dom';
-
 import TextField from '@mui/material/TextField';
+
+
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-
-
 
 
 const pages = ['Exams', 'Main',];
 
 
-
 function ResponsiveAppBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const [searchInput, setSearchInput] = React.useState("");
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
+  const [query, setQuery] = useState("");
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(`http://localhost:9000/api/exams/`);
+      const jsonData = await response.json();
+      setData(jsonData);
+    };
+    fetchData();
+  }, []);
+
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -36,10 +45,15 @@ function ResponsiveAppBar() {
   };
 
 
-
-  const handleChange = (event) => {
-
+  const handleSearchChange = (event) => {
+    const inputValue = event.target.value.toLowerCase();
+    setQuery(inputValue);
   };
+
+  const filteredData = data.filter((item) =>
+    item.name.toLowerCase().includes(query) // Change 'name' to the property you want to search
+  );
+
 
   return (
     <AppBar position="static">
