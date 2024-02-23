@@ -1,5 +1,6 @@
 import React from 'react';
 import ExamItem from "./ExamItem";
+import { Link } from 'react-router-dom';
 
 const ExamsList = ({ items }) => {
 
@@ -24,7 +25,7 @@ const ExamsList = ({ items }) => {
           {items.map(item => (
             <tr key={item._id}>
               <td>{item.patientId}</td>
-              <td>{item.examId}</td>
+              <Link to={`detail/${item._id}`}> <td>{item.examId}</td></Link>
               <td><img src={item.imageURL} alt={`Patient ${item.patientId}`} width="50" height="50" /></td>
               <td>{item.keyFindings}</td>
               <td>{item.brixiaScores}</td>

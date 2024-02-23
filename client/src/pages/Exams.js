@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import ExamsList from '../components/ExamsList'
-
-
+import ExamsList from '../components/ExamsList';
 
 
 const API_URL = 'http://localhost:9000/api/exams'; // Change this to your API endpoint
-
-
 
 const Exams = () => {
   const [data, setData] = useState([]);
@@ -43,8 +39,7 @@ const Exams = () => {
 
   return (
     <div>
-         <h2>List of Items</h2>
-      <h2>List of Items</h2>
+      <h2>Exams</h2>
       <ExamsList items={data} />
     </div>
   );
