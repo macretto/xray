@@ -1,20 +1,17 @@
-import './App.css';
-import ResponsiveAppBar from './components/Navbar';
-import { Routes, Route } from "react-router";
-import Home from './pages/Home';
-import Exams from './pages/Exams';
-import Main from './pages/Main';
-import DetailPage from './pages/DetailPage';
+import { Route, Routes } from "react-router";
+import "./App.css";
+import Navbar from "./components/Navbar.js";
+import DetailPage from "./pages/DetailPage";
+import Exams from "./pages/Exams";
+import Home from "./pages/Home";
+import Main from "./pages/Main";
 
-
-import { useApi } from './hooks/use-api';
+// import { useApi } from './hooks/use-api';
 
 function App() {
-  const { response } = useApi();
-
   return (
-    <div className='App'>
-      <ResponsiveAppBar />
+    <div className="App">
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Exams" element={<Exams />} />
