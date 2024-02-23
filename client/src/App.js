@@ -1,25 +1,25 @@
-import { Route, Routes } from "react-router";
-import "./App.css";
-import Navbar from "./components/Navbar.js";
-import DetailPage from "./pages/DetailPage";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+
+import ErrorPage from "./pages/Error";
 import Exams from "./pages/Exams";
 import Home from "./pages/Home";
-import Main from "./pages/Main";
+import RootLayout from "./pages/Root";
+import "./App.css";
 
-// import { useApi } from './hooks/use-api';
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <RootLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      { path: "/", element: <Home /> },
+      { path: "/exams", element: <Exams /> },
+    ],
+  },
+]);
 
 function App() {
-  return (
-    <div className="App">
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/Exams" element={<Exams />} />
-        <Route path="/Main" element={<Main />} />
-        <Route path="/detail/:id" element={<DetailPage />} />
-      </Routes>
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
