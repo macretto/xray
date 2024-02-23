@@ -13,17 +13,31 @@ const DetailPage = () => {
 
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`http://localhost:9000/api/exams/${id}`);
-        const result = await response.json();
+    async function fetchData() {
+      const response = await fetch('http://localhost:9000/api/exams/${id}/');
+      const result = await response.json();
+      if (response.ok) {
+        const data = await response.json();
         setData(result);
-      } catch (error) {
-        console.log('Error fetching exam details', error);
       }
-    };
+    }
     fetchData();
   }, [id]);
+
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch(`http://localhost:9000/api/exams/${id}/`);
+  //       const result = await response.json();
+  //       setData(result);
+  //       console.log("Exam ID:", id);
+  //     } catch (error) {
+  //       console.log('Error fetching exam details', error);
+  //     }
+  //   };
+  //   fetchData();
+  // }, [id]);
 
   if (!data) {
     return <div>Loading...</div>;
@@ -86,7 +100,7 @@ const DetailPage = () => {
       <div className="image-container">
         <img
           src={data.imageURL}
-          alt="React Logo"
+          // alt="React Logo"
           width={500}
           height={500}
         />
@@ -99,7 +113,7 @@ const DetailPage = () => {
             <TextField
               label="Patient ID"
               value={data.patientId}
-              onChange={(e) => handleInputChange("patientID", e.target.value)}
+              onChange={(e) => handleInputChange("patientId", e.target.value)}
             />
             <TextField
               label="Age"

@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ExamsList from '../components/ExamsList';
 
-
-
-
 const API_URL = 'http://localhost:9000/api/exams'; // Change this to your API endpoint
 const Exams = () => {
   const [data, setData] = useState([]);
@@ -37,10 +34,8 @@ const Exams = () => {
     return <div>Error: {error.message}</div>;
   }
 
-
   return (
     <div style={{textAlign: 'center'}}>
-  
       <h2>EXAMS PAGE (CSS LATER)</h2>
       <span>SEARCH BOX HERE - </span>
       <span><button>CREATE EXAM BUTTON HERE </button> - </span>

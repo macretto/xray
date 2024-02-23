@@ -15,7 +15,6 @@ const ExamItem = ({ item }) => {
       <div>Zip Code: {item.zipCode}</div>
       <div align="right"></div>
       <div>Findings:{item.keyFindings}</div>
-
       <div>Scores: {item.brixiaScores}</div>
       <div>Scores: {item.createdAt}</div>
     </div>
