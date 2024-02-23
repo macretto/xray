@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import ExamsList from '../components/ExamsList'
+import React, { useEffect, useState } from 'react';
+import ExamsList from '../components/ExamsList';
 
 
 
 
 const API_URL = 'http://localhost:9000/api/exams'; // Change this to your API endpoint
-
-
-
 const Exams = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -42,9 +39,12 @@ const Exams = () => {
 
 
   return (
-    <div>
-         <h2>List of Items</h2>
-      <h2>List of Items</h2>
+    <div style={{textAlign: 'center'}}>
+  
+      <h2>EXAMS PAGE (CSS LATER)</h2>
+      <span>SEARCH BOX HERE - </span>
+      <span><button>CREATE EXAM BUTTON HERE </button> - </span>
+      <span><button>ANY OTHER BUTTON HERE </button> - </span>
       <ExamsList items={data} />
     </div>
   );

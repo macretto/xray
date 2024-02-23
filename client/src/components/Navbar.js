@@ -4,10 +4,10 @@ const Navbar = () => {
   return (
     <div className={styles.navbar}>
       <div className={styles.navbarContainer}>
-        <div className={styles.navbarLogo}>SG</div>
+        <div className={styles.navbarLogo}>Surgeon Generals</div>
         <div className={styles.navbarLink}>
           <ul>
-            <li>helkkoi</li>
+            <li>MENU</li>
           </ul>
         </div>
       </div>
