@@ -40,7 +40,6 @@ const Exams = () => {
 
   return (
     <div style={{textAlign: 'center'}}>
-  
       <h2>EXAMS PAGE (CSS LATER)</h2>
       <span>SEARCH BOX HERE - </span>
       <span><button>CREATE EXAM BUTTON HERE </button> - </span>

@@ -1,6 +1,12 @@
 const ExamItem = ({ item }) => {
   return (
-    <div style={{border:'solid black 1px ', width: '60rem', margin: '1rem auto' }}> 
+    <div
+      style={{
+        border: "solid black 1px ",
+        width: "60rem",
+        margin: "1rem auto",
+      }}
+    >
       <li>
         <img src={item.imageURL} style={{ width: "50px", height: "50px" }} />
       </li>
@@ -17,7 +23,7 @@ const ExamItem = ({ item }) => {
       <div>Findings:{item.keyFindings}</div>
 
       <div>Scores: {item.brixiaScores}</div>
-      <div>Scores: {item.createdAt}</div>
+      {item.createdAt ? <div>CreatedAt: {item.createdAt}</div> : ""}
     </div>
   );
 };
