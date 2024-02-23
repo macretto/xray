@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ExamsList from '../components/ExamsList';
 
-
-
-
 const API_URL = 'http://localhost:9000/api/exams'; // Change this to your API endpoint
 const Exams = () => {
   const [data, setData] = useState([]);
@@ -36,7 +33,6 @@ const Exams = () => {
   if (error) {
     return <div>Error: {error.message}</div>;
   }
-
 
   return (
     <div style={{textAlign: 'center'}}>

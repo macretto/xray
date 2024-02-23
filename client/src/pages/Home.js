@@ -1,15 +1,7 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 
-
-
 export default function DenseTable() {
-
-
-
-
-
-
   return (
     // <TableContainer component={Paper}>
     //   <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
