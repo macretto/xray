@@ -1,12 +1,19 @@
-import { Route, Routes } from "react-router";
-import "./App.css";
-import Navbar from "./components/Navbar.js";
-import DetailPage from "./pages/DetailPage";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Navbar from "./components/Navbar";import "./App.css";
 import Exams from "./pages/Exams";
 import Home from "./pages/Home";
-import Main from "./pages/Main";
+import RootLayout from "./pages/Root";
 
-// import { useApi } from './hooks/use-api';
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <RootLayout />,
+    children: [
+      { path: "/", element: <Home /> },
+      { path: "/exams", element: <Exams /> },
+    ],
+  },
+]);
 
 function App() {
   return (

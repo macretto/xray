@@ -36,7 +36,6 @@ const Exams = () => {
     return <div>Error: {error.message}</div>;
   }
 
-
   return (
     <div>
       <h2>Exams</h2>

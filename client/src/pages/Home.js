@@ -1,33 +1,7 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import { Link } from 'react-router-dom';
-
 
 export default function DenseTable() {
-  const [data, setData] = useState([]);
-
-  const datas = async () => {
-    const response = await fetch('http://localhost:9000/api/exams');
-    setData(await response.json());
-  };
-
-
-  
-  console.log(data);
-  useEffect(() => {
-    datas();
-  }, []);
-
-
-
-
 
   return (
     // <TableContainer component={Paper}>

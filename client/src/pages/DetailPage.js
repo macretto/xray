@@ -22,9 +22,24 @@ const DetailPage = () => {
       } catch (error) {
         console.log('Error fetching exam details', error);
       }
-    };
+    }
     fetchData();
   }, [id]);
+
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch(`http://localhost:9000/api/exams/${id}/`);
+  //       const result = await response.json();
+  //       setData(result);
+  //       console.log("Exam ID:", id);
+  //     } catch (error) {
+  //       console.log('Error fetching exam details', error);
+  //     }
+  //   };
+  //   fetchData();
+  // }, [id]);
 
   if (!data) {
     return <div>Loading...</div>;

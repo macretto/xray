@@ -40,4 +40,5 @@ const ExamsList = ({ items }) => {
     </div>
   );
 };
+
 export default ExamsList;
