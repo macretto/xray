@@ -13,12 +13,14 @@ const DetailPage = () => {
 
 
   useEffect(() => {
-    async function fetchData() {
-      const response = await fetch('http://localhost:9000/api/exams/${id}/');
-      const result = await response.json();
-      if (response.ok) {
-        const data = await response.json();
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`http://localhost:9000/api/exams/${id}/`);
+        const result = await response.json();
         setData(result);
+        console.log("Exam ID:", id);
+      } catch (error) {
+        console.log('Error fetching exam details', error);
       }
     }
     fetchData();

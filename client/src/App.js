@@ -16,7 +16,17 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <div className="App">
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Exams" element={<Exams />} />
+        <Route path="/Main" element={<Main />} />
+        <Route path="/exams/detail/:id" element={<DetailPage />} />
+      </Routes>
+    </div>
+  );
 }
 
 export default App;
