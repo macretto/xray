@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import {Link} from 'react-router-dom'
 import ExamsList from '../components/ExamsList';
 
 
@@ -42,7 +43,7 @@ const Exams = () => {
     <div style={{textAlign: 'center'}}>
       <h2>EXAMS PAGE (CSS LATER)</h2>
       <span>SEARCH BOX HERE - </span>
-      <span><button>CREATE EXAM BUTTON HERE </button> - </span>
+      <Link to="/exams/new"><button>CREATE EXAM BUTTON HERE </button> - </Link>
       <span><button>ANY OTHER BUTTON HERE </button> - </span>
       <ExamsList items={data} />
     </div>

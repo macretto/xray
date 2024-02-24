@@ -3,7 +3,6 @@ import { Button, TextField } from "@mui/material";
 import { useParams, useNavigate } from "react-router-dom";
 
 
-import Home from './Home';
 
 const DetailPage = () => {
   const { id } = useParams();

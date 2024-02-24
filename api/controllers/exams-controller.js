@@ -30,7 +30,7 @@ const createExamController = async (req, res) => {
   //grabbing all params object from the request object
   const {
     patientId,
-      patientName,
+    patientName,
     age,
     sex,
     zipCode,

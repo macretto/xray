@@ -1,18 +1,28 @@
+import {Link} from 'react-router-dom'
+import styles from './examItem.module.css'
+
+
 const ExamItem = ({ item }) => {
   return (
-    <div
-      style={{
-        border: "solid black 1px ",
-        width: "60rem",
-        margin: "1rem auto",
-      }}
+    
+    <li
+    
     >
-      <img src={item.imageURL} style={{ width: "50px", height: "50px" }} />
+
+<div className={styles.wrapper}>
+  <div className={styles.image}>
+  <img
+
+        src={item.imageURL}
+        alt="xray"
+  
+      />
+  </div>
 
       <span>ID: {item._id}</span>
-
       <span>PatientID: {item.patientId}</span>
       <div>{item.examId}</div>
+      <div>{item.patientName}</div>
       <div>Age: {item.age}</div>
       <div>Sex: {item.sex}</div>
       <div>Bmi: {item.bmi}</div>
@@ -22,7 +32,10 @@ const ExamItem = ({ item }) => {
 
       <div>Scores: {item.brixiaScores}</div>
       {item.createdAt ? <div>CreatedAt: {item.createdAt}</div> : ""}
-    </div>
+      </div>
+      
+    </li>
+    
   );
 };
 

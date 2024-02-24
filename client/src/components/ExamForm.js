@@ -1,107 +1,212 @@
 import { useState } from "react";
-// import {redirect} from  'react-router-dom'
+import { useNavigate } from "react-router-dom";
 import styles from "./ExamForm.module.css";
 
 const ExamForm = () => {
-  const [name, setName] = useState("");
+  let navigateTo= useNavigate();
+
+  const [patientName, setPatientName] = useState("");
   const [age, setAge] = useState("");
-  // const [sex, setSex] = useState("");
+  const [sex, setSex] = useState("n");
   const [bmi, setBmi] = useState("");
   const [zipCode, setZipCode] = useState("");
-  const [scores, setScores] = useState("");
-  const [image, setImage] = useState("");
-  const [findings, setFindings] = useState("");
+  const [brixiaScores, setBrixiaScores] = useState([]);
+  const [imageURL, setImageURL] = useState("");
+  const [keyFindings, setKeyFindings] = useState("");
 
+  const URL = "http://localhost:9000/api/exams";
 
-    const handleSubmit = async (event) => {
-      event.preventDefault();
-  
-      try {
-        const response = await fetch("http://localhost:9000/api/exams", {
-       
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              name,
-              age,
-              // sex,
-              bmi,
-              zipCode,
-              scores,
-              image,
-              findings
-            })
-          });
-      
-          if (!response.ok) {
-            throw new Error('Failed to submit form');
-          }
-      
-          // Check if the response status is 204
-          if (response.status === 204) {
-            // Clear form after successful submission
-            setName("");
-            setAge("");
-            // setSex("");
-            setBmi("");
-            setZipCode("");
-            setScores("");
-            setImage("");
-            setFindings("");
-            console.log("GOOD")
-          } else {
-            // Handle other response statuses if needed
-          }
-        } catch (error) {
-          console.error('Error:', error.message);
-        }
-      };
+  // function that randomlyy choses an id for examId and patientID
+  //no id is assigned tothem from mongo or node.
+  const randomNumber = (type) => {
+    let rand = Math.round(Math.random() * 50000000000);
+
+    if (type === "patientId") {
+      return `Patient-${rand}`;
+    } else {
+      return `Exam-${rand}`;
+    }
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const newExam = {
+      patientName,
+      age,
+      examId: randomNumber("examId"),
+      bmi,
+      patientId: randomNumber("patientId"),
+      sex,
+      __v: 0,
+      zipCode,
+      brixiaScores,
+      imageURL:"https://stackoverflow.com/questions/47134609/how-to-store-url-value-in-mongoose-schema",
+      keyFindings,
+    };
+
+    const response = await fetch(URL, {
+      method: "POST",
+      body: JSON.stringify(newExam),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const json = await response.json();
+
+    if (!response.ok) {
+      throw new Error("ERROR IN POST " + json);
+    }
+    if (response.ok) {
+      // setPatientName("");
+      setAge("");
+      setSex("");
+      setBmi("");
+      setZipCode("");
+      setBrixiaScores([]);
+      setImageURL("");
+      setKeyFindings("");
+      navigateTo("/exams");
+    }
+  };
+
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
+      <h3>Create Exam</h3>
+
       <p>
         <label htmlFor="name">Patient Name</label>
-        <input id="name" type="text" name="name" value={name} onChange={(e) => setName(e.target.value)}  />
+        <input
+          id="name"
+          type="text"
+          name="patientName"
+          value={patientName}
+          onChange={(e) => setPatientName(e.target.value)}
+          required
+        />
       </p>
 
-   
+      <label htmlFor="name">Sex</label>
+      <div
+        style={{ display: "flex", justifyContent: "center", width: "10rem" }}
+      >
+        <span>F:</span>
+        <input
+          className={styles.sep}
+          id="sex"
+          type="radio"
+          name="sex"
+          checked={sex === "F" || "f"}
+          value="F"
+          onChange={(e) => setSex(e.target.value)}
+          required
+        />
+
+        <span className={styles.sep}>M:</span>
+        <input
+          className={styles.sep}
+          id="sex"
+          type="radio"
+          name="sex"
+          checked={sex === "M" || "m"}
+          value="M"
+          onChange={(e) => setSex(e.target.value)}
+          required
+        />
+
+        <span className={styles.sep}>N:</span>
+        <input
+          className={styles.sep}
+          id="sex"
+          type="radio"
+          name="sex"
+          checked={sex === "N" || "n"}
+          value="N"
+          onChange={(e) => setSex(e.target.value)}
+          required
+        />
+      </div>
       <p>
         <label htmlFor="age">Age</label>
-        <input id="age" type="number" name="age" value={age} onChange={(e) => setAge(e.target.value)} />
+        <input
+          id="age"
+          type="number"
+          name="age"
+          value={age}
+          onChange={(e) => setAge(e.target.value)}
+          required
+        />
       </p>
 
       <p>
         <label htmlFor="bmi">Bmi </label>
-        <input id="bmi" type="number" name="bmi" value={bmi} onChange={(e) => setBmi(e.target.value)}  />
+        <input
+          id="bmi"
+          type="number"
+          name="bmi"
+          value={bmi}
+          onChange={(e) => setBmi(e.target.value)}
+          required
+        />
       </p>
 
       <p>
         <label htmlFor="date">Zip Code </label>
-        <input id="zip" type="text" name="number" value={zipCode} onChange={(e) => setZipCode(e.target.value)} />
+        <input
+          id="zip"
+          type="text"
+          name="zip"
+          value={zipCode}
+          onChange={(e) => setZipCode(e.target.value)}
+          required
+        />
       </p>
 
       <p>
-        <label htmlFor="scores">BrixiaScores </label>
-        <input id="scores" type="number" name="scores" value={scores} onChange={(e) => setScores(e.target.value)} />
+        <label htmlFor="brixiaScores">BrixiaScores </label>
+        <input
+          type="text"
+          value={brixiaScores.join(",")}
+          onChange={(e) => setBrixiaScores(e.target.value.split(","))}
+        />
       </p>
       <p>
         <label htmlFor="image">Image</label>
-        <input id="image" type="url" name="image" value={image} onChange={(e) => setImage(e.target.value)}/>
+        <input
+          id="image"
+          type="text"
+          name="imageUrl"
+          value={imageURL}
+          onChange={(e) => setImageURL(e.target.value)}
+          required
+        />
       </p>
 
       <p>
         <label htmlFor="findings">Findings</label>
-        <textarea id="findings" name="findings" rows="5" value={findings} onChange={(e) => setFindings(e.target.value)} />
+        <textarea
+          id="findings"
+          name="findings"
+          rows="5"
+          value={keyFindings}
+          onChange={(e) => setKeyFindings(e.target.value)}
+          required
+        />
       </p>
       <p>
         <span> Created on 02/23/2024</span>
       </p>
 
       <div className={styles.actions}>
-        <button className={styles.btn} type="submit">CREATE EXAM</button>
+        <button className={styles.btn} type="submit">
+          Create
+        </button>
       </div>
-      <p>-{name}</p>
+      <div>
+        {patientName}-{age}-{bmi}-{brixiaScores}-{zipCode}-{keyFindings}-{sex}
+      </div>
+      {randomNumber()}
+      {(randomNumber("examId"), randomNumber("patientId"))}
     </form>
   );
 };

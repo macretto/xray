@@ -1,0 +1,13 @@
+.wrapper {
+  display: flex;
+  flex-direction: columns;
+}
+
+.image img{
+  margin: 0 auto;
+  width: 75px;
+  min-height: 100%;
+  object-fit: contain;
+  /* object-fit: cover;
+*/
+}
