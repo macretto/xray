@@ -30,6 +30,7 @@ const createExamController = async (req, res) => {
   //grabbing all params object from the request object
   const {
     patientId,
+      patientName,
     age,
     sex,
     zipCode,
@@ -45,6 +46,7 @@ const createExamController = async (req, res) => {
   try {
     const newExam = await Exams.create({
       patientId,
+      patientName,
       age,
       sex,
       zipCode,

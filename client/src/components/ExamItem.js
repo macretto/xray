@@ -7,9 +7,7 @@ const ExamItem = ({ item }) => {
         margin: "1rem auto",
       }}
     >
-      <li>
-        <img src={item.imageURL} style={{ width: "50px", height: "50px" }} />
-      </li>
+      <img src={item.imageURL} style={{ width: "50px", height: "50px" }} />
 
       <span>ID: {item._id}</span>
 

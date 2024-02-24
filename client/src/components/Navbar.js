@@ -6,8 +6,10 @@ const Navbar = () => {
       <div className={styles.navbarContainer}>
         <div className={styles.navbarLogo}>Surgeon Generals</div>
         <div className={styles.navbarLink}>
-          <ul>
-            <li>MENU</li>
+          <ul className={styles.links}>
+            <li>Exams</li>
+            <li>Menu</li>
+            <li>About</li>
           </ul>
         </div>
       </div>

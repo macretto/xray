@@ -6,6 +6,7 @@ const Schema = mongoose.Schema;
 const examsSchema = new Schema(
   {
     patientId: { type: String, required: true },
+      patientName: { type: String, required: true },
     age: { type: Number, required: true },
     sex: { type: String, required: true },
     zipCode: { type: String, required: true },

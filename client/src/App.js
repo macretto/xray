@@ -1,9 +1,12 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import ErrorPage from "./pages/Error";
-import Exams from "./pages/Exams";
-import Home from "./pages/Home";
+import ExamsPage from "./pages/Exams";
+import HomePage from "./pages/Home";
 import RootLayout from "./pages/Root";
+import NewExamPage from "./pages/NewExam";
+import ExamDetailPage from "./pages/DetailPage";
+import EditExamPage from "./pages/editExam";
 import "./App.css";
 
 const router = createBrowserRouter([
@@ -12,8 +15,35 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     errorElement: <ErrorPage />,
     children: [
-      { path: "/", element: <Home /> },
-      { path: "/exams", element: <Exams /> },
+      { index: true, element: <HomePage /> },
+      {
+        path: "exams",
+        // element: <RootLayout />,
+        children: [
+          {
+            index: true,
+            element: <ExamsPage />,
+          },
+          {
+            path: ":examId",
+
+            children: [
+              {
+                index: true,
+                element: <ExamDetailPage />,
+              },
+              {
+                path: "edit",
+                element: <EditExamPage />,
+              },
+            ],
+          },
+          {
+            path: "new",
+            element: <NewExamPage />,
+          },
+        ],
+      },
     ],
   },
 ]);
