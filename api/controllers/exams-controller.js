@@ -10,7 +10,7 @@ const getAllExamsController = async (req, res) => {
 //gets single item by specific id
 const getExamController = async (req, res) => {
   const { id } = req.params; //grabbing id params from the request object
-
+console.log(req.params.id)
   //?handling error if no id is found
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({ error: "Exam does not exist" });

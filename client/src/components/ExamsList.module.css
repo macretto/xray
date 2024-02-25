@@ -40,7 +40,7 @@ min-width: 100%;
 
 .item img {
 max-width: 10rem;
-min-height: ;
+
   object-fit: cover;
   
 }
