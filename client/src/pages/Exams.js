@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import {Link} from 'react-router-dom'
+
+import {Link, useParams} from 'react-router-dom'
 import ExamsList from '../components/ExamsList';
 
 
@@ -7,6 +8,8 @@ import ExamsList from '../components/ExamsList';
 
 const API_URL = 'http://localhost:9000/api/exams'; // Change this to your API endpoint
 const Exams = () => {
+
+
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -44,7 +47,7 @@ const Exams = () => {
       <h2>EXAMS PAGE (CSS LATER)</h2>
       <span>SEARCH BOX HERE - </span>
       <Link to="/exams/new"><button>CREATE EXAM BUTTON HERE </button> - </Link>
-      <span><button>ANY OTHER BUTTON HERE </button> - </span>
+      <Link to={ `/exams`}><button>ANY OTHER BUTTON HERE </button> - </Link>
       <ExamsList items={data} />
     </div>
   );
