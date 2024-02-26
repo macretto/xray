@@ -1,5 +1,9 @@
 .navbar {
-    background-color: #333;
+
+    /* background-color: #333; */
+    background-color: #374a9c;
+    ;
+
     color: white;
     padding: 10px 0;
   }
@@ -28,4 +32,14 @@
   
   .navbarLinks li:hover {
     color: lightgray;
+  }
+
+  .links {
+    display: flex;
+    
+  }
+
+  .links li{
+    display: flex;
+    margin: 0 0.7rem;
   }

@@ -1,42 +1,58 @@
-import React from 'react';
-import ExamItem from "./ExamItem";
-import { Link } from 'react-router-dom';
+import React from "react";
+import styles from "./ExamsList.module.css";
+import { Link } from "react-router-dom";
 
 const ExamsList = ({ items }) => {
-
   return (
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <th> Patient ID</th>
-            <th> Exam ID</th>
-            <th> Image</th>
-            <th> Key Findings</th>
-            <th> Brixia Score</th>
-            <th> Age</th>
-            <th> Sex</th>
-            <th> BMI</th>
-            <th> Zip Code</th>
-          </tr>
-        </thead>
+    <div className={styles.exams}>
+      <h1>All Events</h1>
 
-        <tbody>
-          {items.map(item => (
-            <tr key={item._id}>
-              <td>{item.patientId}</td>
-              <Link to={`detail/${item._id}`}> <td>{item.examId}</td></Link>
-              <td><img src={item.imageURL} alt={`Patient ${item.patientId}`} width="50" height="50" /></td>
-              <td>{item.keyFindings}</td>
-              <td>{item.brixiaScores}</td>
-              <td>{item.age}</td>
-              <td>{item.sex}</td>
-              <td>{item.bmi}</td>
-              <td>{item.zipCode}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <ul className={styles.list}>
+        {items.map((exam) => (
+          <li key={exam._id} className={styles.item}>
+            <Link to={`/exams/${exam._id}`}>
+              <img src={exam.imageURL} alt={exam.imageURL} />
+              <div className={styles.content}>
+                <div className={styles.titles}>
+                  <h4>Patient: </h4>
+                  <p>{exam.patientName}</p>
+                </div>
+
+                <div className={styles.titles}>
+                  <h4>Age</h4>
+                  <p>{exam.age}</p>
+                </div>
+
+                <div className={styles.titles}>
+                  <h4>Sex</h4>
+                  <p>{exam.sex}</p>
+                </div>
+                <div className={styles.titles}>
+                  <h4>Bmi</h4>
+                  <p>{exam.bmi}</p>
+                </div>
+                <div className={styles.titles}>
+                  <h4>ZipCode</h4>
+                  <p>{exam.zipCode}</p>
+                </div>
+                <div className={styles.titles}>
+                  <h4>Findings</h4>
+                  <p>{exam.keyFindings}</p>
+                </div>
+                <div className={styles.titles}>
+                  <h4>BrixiaScores</h4>
+                  <p>{exam.age}</p>
+                </div>
+
+                <div className={styles.titles}>
+                  <h4>created</h4>
+                  <time>{exam.age}</time>
+                </div>
+              </div>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

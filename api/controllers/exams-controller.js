@@ -10,7 +10,7 @@ const getAllExamsController = async (req, res) => {
 //gets single item by specific id
 const getExamController = async (req, res) => {
   const { id } = req.params; //grabbing id params from the request object
-
+console.log(req.params.id)
   //?handling error if no id is found
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({ error: "Exam does not exist" });
@@ -30,6 +30,7 @@ const createExamController = async (req, res) => {
   //grabbing all params object from the request object
   const {
     patientId,
+    patientName,
     age,
     sex,
     zipCode,
@@ -45,6 +46,7 @@ const createExamController = async (req, res) => {
   try {
     const newExam = await Exams.create({
       patientId,
+      patientName,
       age,
       sex,
       zipCode,
