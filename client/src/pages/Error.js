@@ -1,6 +1,5 @@
 import { useRouteError } from 'react-router-dom';
 import Navbar from '../components/Navbar';
-
 import PageContent from '../components/PageContent';
 
 function ErrorPage() {
