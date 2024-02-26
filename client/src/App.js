@@ -34,11 +34,13 @@ const router = createBrowserRouter([
                 element: <ExamDetailPage />,
               },
               {
-                path: "edit",
+                path: "update",
                 element: <EditExamPage />,
               },
+          
             ],
           },
+          
           {
             path: "new",
             element: <NewExamPage />,

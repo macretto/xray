@@ -1,4 +1,11 @@
+
+
 .header {
+
+  width: 50rem;
+  margin: 1rem auto;
+  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
     padding: 2rem;
     display: flex;
     justify-content: center;
@@ -7,18 +14,40 @@
   .list {
     display: flex;
     gap: 1rem;
+    text-decoration: none;
+    list-style: none;
   }
   
   .list a {
-    background-color: var(--color-gray-500);
-    color: var(--color-gray-900);
+    
+    color: rgb(233, 233, 233);
     padding: 0.5rem 1.5rem;
     border-radius: 4px;
     text-decoration: none;
+    background-color: #14396a;
   }
   
   .list a:hover,
   .list a:active,
   .list a.active {
-    background-color: var(--color-primary-600);
+    background-color:#374a9c;
+    color: white;
+    transition: 200ms;
+  }
+
+  .btn{
+   
+    background: #14396a;
+    font-size:1rem;
+    
+    width:120px;
+    height:45px;
+    border-width:1px;
+    color:#fff;
+    border-color:#ffffff;
+    border-radius:8px;
+    
+   
+ 
+ 
   }

@@ -10,22 +10,15 @@ function ExamsNavigation() {
           <li>
             <Link
               to="/exams"
-              className={({ isActive }) =>
-                isActive ? styles.active : undefined
-              }
-              end
+              className={ styles.btn }
+              
             >
               Exams
             </Link>
           </li>
 
           <li>
-            <Link
-              to="/exams/new"
-              className={({ isActive }) =>
-                isActive ? styles.active : undefined
-              }
-            >
+            <Link to="/exams/new" className={styles.btn}>
               Create Exam
             </Link>
           </li>

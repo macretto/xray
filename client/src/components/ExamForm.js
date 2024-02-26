@@ -41,7 +41,7 @@ const ExamForm = () => {
       __v: 0,
       zipCode,
       brixiaScores,
-      imageURL:"https://stackoverflow.com/questions/47134609/how-to-store-url-value-in-mongoose-schema",
+      imageURL,
       keyFindings,
     };
 

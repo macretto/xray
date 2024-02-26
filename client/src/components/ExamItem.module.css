@@ -20,8 +20,8 @@
 
 .items span{
   color:rgb(128, 128, 128);
+  
 }
-
 
 
 .items img {
@@ -48,12 +48,14 @@
 }
 
 .actions button {
-  background-color: transparent;
-  border: none;
+  align-items: left;
+  /* background-color: transparent;
+  border: none; */
  
 }
 
  .items .description{
+ text-align: left;
   max-width: 25rem;
   margin: 1rem auto ;
   line-height: 1.4rem;

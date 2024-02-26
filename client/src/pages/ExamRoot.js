@@ -1,11 +1,11 @@
 import { Outlet } from 'react-router-dom';
 
-import EventsNavigation from '../components/ExamsNavigation';
+import ExamsNavigation from '../components/ExamsNavigation';
 
 function EventsRootLayout() {
   return (
     <>
-      <EventsNavigation />
+      <ExamsNavigation />
       <Outlet />
     </>
   );
