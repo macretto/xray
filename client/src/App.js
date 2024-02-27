@@ -6,7 +6,7 @@ import RootLayout from "./pages/Root";
 import NewExamPage from "./pages/NewExam";
 import ExamDetailPage from "./pages/DetailPage";
 import EditExamPage from "./pages/editExam";
-import ExamsLayout from './pages/ExamRoot'
+import ExamsLayout from "./pages/ExamRoot";
 import "./App.css";
 
 const router = createBrowserRouter([
@@ -18,7 +18,7 @@ const router = createBrowserRouter([
       { index: true, element: <HomePage /> },
       {
         path: "exams",
-    
+
         children: [
           {
             index: true,
@@ -36,10 +36,9 @@ const router = createBrowserRouter([
                 path: "update",
                 element: <EditExamPage />,
               },
-          
             ],
           },
-          
+
           {
             path: "new",
             element: <NewExamPage />,

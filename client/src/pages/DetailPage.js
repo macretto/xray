@@ -1,40 +1,62 @@
 import ExamItem from "../components/ExamItem";
-import { useParams,useNavigate } from "react-router-dom";
-
+import { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import ExamForm from "../components/ExamForm";
 
 const DetailPage = () => {
+  const [close, setClose] = useState(false);
   const { examId } = useParams(); //param passed to ExamItem component for rendering
-const navigateTo = useNavigate()
+  const navigateTo = useNavigate();
 
+  //handler to delete in details page
+  const handleDelete = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:9000/api/exams/${examId}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            // Add any other headers if needed
+          },
+        }
+      );
 
-//handler to delete in details page
-const handleDelete = async () => {
-  try {
-    const response = await fetch(`http://localhost:9000/api/exams/${examId}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        // Add any other headers if needed
-      },
-    });
+      if (!response.ok) {
+        throw new Error("Failed to delete exam");
+      }
 
-    if (!response.ok) {
-      throw new Error('Failed to delete exam');
+      // Exam successfully deleted
+      console.log("Exam deleted successfully");
+      navigateTo("/exams");
+    } catch (error) {
+      console.error("Error deleting exam:", error.message);
     }
+  };
 
-    // Exam successfully deleted
-    console.log('Exam deleted successfully');
-navigateTo('/exams')
-
-  } catch (error) {
-    console.error('Error deleting exam:', error.message);
-  }
-};
+  const closeHandler = () => {
+    setClose(() => !close);
+  };
 
   return (
-    <div style={{ textAlign: 'center' }}>
-      <h1 style={{ color: "rgb(68, 68, 68)" }}>Patient Details </h1>
-      <ExamItem exam={examId}  handlerDelete={handleDelete} />
+    <div style={{ textAlign: "center" }}>
+
+      {!close ? (
+        <h1 style={{ color: "rgb(68, 68, 68)" }}>Patient Details </h1> && (
+          <ExamItem
+            exam={examId}
+            handlerDelete={handleDelete}
+            onClose={closeHandler}
+          />
+        )
+      ) : (
+        <ExamForm
+          buttonTitle="Update"
+          title="Edit Exam"
+          onClose={closeHandler}
+          method="patch"
+        />
+      )}
     </div>
   );
 };

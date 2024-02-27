@@ -11,9 +11,9 @@ const ExamsList = ({ items }) => {
         {items.map((exam) => (
           <li key={exam._id} className={styles.item}>
             <Link to={`/exams/${exam._id}`}>
-        
+            <img src={exam.imageURL} alt={exam.imageURL} />
               <div className={styles.content}>
-              <img src={exam.imageURL} alt={exam.imageURL} />
+           
                 <div className={styles.titles} style={{width:'3rem'}}>
                   <h4>Patient: </h4>
                   <p>{exam.patientName}</p>
@@ -38,8 +38,8 @@ const ExamsList = ({ items }) => {
                 </div>
                 <div className={styles.titles} style={{width:'10rem'}}>
                   <h4>Findings</h4>
-                  <p>{exam.keyFindings.slice(0,60)}</p>
-                  <span style={{color:'blue', boxShadow:'none'}} > see more..</span>
+                  <p>{exam.keyFindings.slice(0,60)}... <span style={{color:'blue', boxShadow:'none'}} > see more</span></p>
+                  
                 </div>
                 <div className={styles.titles}>
                   <h4>BrixiaScores</h4>
@@ -56,6 +56,9 @@ const ExamsList = ({ items }) => {
         ))}
       </ul>
     </div>
+
+
+    
   );
 };
 

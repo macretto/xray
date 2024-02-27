@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+
 import styles from "./ExamItem.module.css";
 
-const ExamItem = ({ exam, handlerDelete }) => {
+const ExamItem = ({ exam, handlerDelete, onClose }) => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -91,7 +91,8 @@ const ExamItem = ({ exam, handlerDelete }) => {
         </div>
         <div className={styles.actions}>
           <button className={styles.delete} onClick={handlerDelete}>Delete</button>
-          <Link to={`update`}> Update </Link>
+          <button onClick={onClose}> Update </button>
+     
         </div>
       </div>
     </article>

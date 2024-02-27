@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./ExamForm.module.css";
 
-const ExamForm = () => {
-  let navigateTo= useNavigate();
+const ExamForm = ({ title, buttonTitle, onClose, method }) => {
+  let navigateTo = useNavigate();
 
   const [patientName, setPatientName] = useState("");
   const [age, setAge] = useState("");
@@ -17,7 +17,7 @@ const ExamForm = () => {
   const URL = "http://localhost:9000/api/exams";
 
   // function that randomlyy choses an id for examId and patientID
-  //no id is assigned tothem from mongo or node.
+  //no id is assigned to them from mongo or node.
   const randomNumber = (type) => {
     let rand = Math.round(Math.random() * 50000000000);
 
@@ -28,6 +28,7 @@ const ExamForm = () => {
     }
   };
 
+  //submits new exam
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -52,13 +53,16 @@ const ExamForm = () => {
         "Content-Type": "application/json",
       },
     });
+    <button className={styles.btn} type="submit">
+      {buttonTitle}
+    </button>;
     const json = await response.json();
 
     if (!response.ok) {
       throw new Error("ERROR IN POST " + json);
     }
     if (response.ok) {
-      // setPatientName("");
+      setPatientName("");
       setAge("");
       setSex("");
       setBmi("");
@@ -72,12 +76,12 @@ const ExamForm = () => {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-      <h3>Create Exam</h3>
+      <h3>{title}</h3>
 
       <p>
-        <label htmlFor="name">Patient Name</label>
+        <label htmlFor="patientName">Patient Name</label>
         <input
-          id="name"
+          id="patientName"
           type="text"
           name="patientName"
           value={patientName}
@@ -86,14 +90,14 @@ const ExamForm = () => {
         />
       </p>
 
-      <label htmlFor="name">Sex</label>
+      <label htmlFor="sex1">Sex</label>
       <div
         style={{ display: "flex", justifyContent: "center", width: "10rem" }}
       >
         <span>F:</span>
         <input
           className={styles.sep}
-          id="sex"
+          id="sex1"
           type="radio"
           name="sex"
           checked={sex === "F" || "f"}
@@ -105,7 +109,8 @@ const ExamForm = () => {
         <span className={styles.sep}>M:</span>
         <input
           className={styles.sep}
-          id="sex"
+       
+          id="sex2"
           type="radio"
           name="sex"
           checked={sex === "M" || "m"}
@@ -117,7 +122,7 @@ const ExamForm = () => {
         <span className={styles.sep}>N:</span>
         <input
           className={styles.sep}
-          id="sex"
+          id="sex3"
           type="radio"
           name="sex"
           checked={sex === "N" || "n"}
@@ -151,7 +156,7 @@ const ExamForm = () => {
       </p>
 
       <p>
-        <label htmlFor="date">Zip Code </label>
+        <label htmlFor="zip">Zip Code </label>
         <input
           id="zip"
           type="text"
@@ -165,6 +170,7 @@ const ExamForm = () => {
       <p>
         <label htmlFor="brixiaScores">BrixiaScores </label>
         <input
+        id="brixiaScores"
           type="text"
           value={brixiaScores.join(",")}
           onChange={(e) => setBrixiaScores(e.target.value.split(","))}
@@ -189,7 +195,7 @@ const ExamForm = () => {
           name="findings"
           rows="5"
           value={keyFindings}
-          onChange={(e) => setKeyFindings(e.target.value)}
+          onChange={(e) => setKeyFindings(e.tclosearget.value)}
           required
         />
       </p>
@@ -198,15 +204,19 @@ const ExamForm = () => {
       </p>
 
       <div className={styles.actions}>
-        <button className={styles.btn} type="submit">
-          Create
-        </button>
+        {onClose ? <button onClick={onClose}> Go Back </button> : ""}
+
+        {method === "patch" ? (
+          <button className={styles.btn} onClick={onClose}>
+            UPDATE
+          </button>
+        ) : (
+          <button className={styles.btn} type="submit">
+            {buttonTitle}
+          </button>
+        )}
       </div>
-      <div>
-        {patientName}-{age}-{bmi}-{brixiaScores}-{zipCode}-{keyFindings}-{sex}
-      </div>
-      {randomNumber()}
-      {(randomNumber("examId"), randomNumber("patientId"))}
+      <div></div>
     </form>
   );
 };
