@@ -36,15 +36,15 @@ const Exams = () => {
   }
 
   return (
-    <div style={{ textAlign: "center" }}>
-      <h2>EXAMS PAGE (CSS LATER)</h2>
-      <span>SEARCH BOX HERE - </span>
+    <div style={{ textAlign: "center", margin:'2rem auto' }}>
+      
       <Link to="/exams/new">
-        <button>CREATE EXAM BUTTON HERE </button> -{" "}
+        <button>Add Exam</button> 
       </Link>
-      <Link to={`/exams`}>
-        <button>ANY OTHER BUTTON HERE </button> -{" "}
-      </Link>
+   <label>Search</label>
+   <input type="text" />
+     
+    
       <ExamsList items={data} />
     </div>
   );

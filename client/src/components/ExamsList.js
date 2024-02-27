@@ -5,15 +5,16 @@ import { Link } from "react-router-dom";
 const ExamsList = ({ items }) => {
   return (
     <div className={styles.exams}>
-      <h1>All Events</h1>
+      <h1>Exams</h1>
 
       <ul className={styles.list}>
         {items.map((exam) => (
           <li key={exam._id} className={styles.item}>
             <Link to={`/exams/${exam._id}`}>
-              <img src={exam.imageURL} alt={exam.imageURL} />
+        
               <div className={styles.content}>
-                <div className={styles.titles}>
+              <img src={exam.imageURL} alt={exam.imageURL} />
+                <div className={styles.titles} style={{width:'3rem'}}>
                   <h4>Patient: </h4>
                   <p>{exam.patientName}</p>
                 </div>
@@ -35,9 +36,10 @@ const ExamsList = ({ items }) => {
                   <h4>ZipCode</h4>
                   <p>{exam.zipCode}</p>
                 </div>
-                <div className={styles.titles}>
+                <div className={styles.titles} style={{width:'10rem'}}>
                   <h4>Findings</h4>
-                  <p>{exam.keyFindings}</p>
+                  <p>{exam.keyFindings.slice(0,60)}</p>
+                  <span style={{color:'blue', boxShadow:'none'}} > see more..</span>
                 </div>
                 <div className={styles.titles}>
                   <h4>BrixiaScores</h4>
@@ -46,7 +48,7 @@ const ExamsList = ({ items }) => {
 
                 <div className={styles.titles}>
                   <h4>created</h4>
-                  <time>{exam.age}</time>
+                  <time>02/28/2024</time>
                 </div>
               </div>
             </Link>

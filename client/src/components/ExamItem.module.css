@@ -1,12 +1,11 @@
-
-.items{
+.items {
   max-width: 50rem;
   margin: 2rem auto;
   text-align: center;
 
   border-radius: 9px;
   padding: 1rem;
-  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.12);
+  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.08);
 }
 
 .items:hover {
@@ -14,52 +13,68 @@
   background-color: var(--color-gray-700);
   transition: ease-in 100ms;
   box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.2);
-
 }
 
-
-.items span{
-  color:rgb(128, 128, 128);
-  
+.items span {
+  color: rgb(128, 128, 128);
 }
-
 
 .items img {
   width: 50%;
- 
+
   border-radius: 7px;
   object-fit: cover;
 }
 
-.actions {
-  display: flex;
+/* in updatePage */
+.items .description {
+  text-align: left;
+  max-width: 25rem;
+  margin: 1rem auto;
+  line-height: 1.4rem;
+  font-size: 1.1rem;
+  color: rgb(68, 68, 68);
+  /* border:solid red 1px; */
+}
+
+.actions button,
+.actions a {
   gap: 1rem;
-  justify-content: center;
+
   align-items: center;
   padding: 0;
 }
-
-.actions a,
-.actions button {
-  padding: 0.25rem 1rem;
+/* buttons */
+/* shared buttons properties */
+.actions button,
+.actions a {
+  margin-right: 1rem;
+  color: white;
+  background-color: #14396a;
+  border: none;
+  padding: 8px 25px;
+  border-radius: 7px;
   text-decoration: none;
   font: inherit;
   cursor: pointer;
 }
 
 .actions button {
-  align-items: left;
-  /* background-color: transparent;
-  border: none; */
- 
+  background-color: #c01616;
+}
+/* buttons hover effects*/
+
+.actions button:hover,
+.actions a:hover {
+  transition: 300ms ease-in-out;
 }
 
- .items .description{
- text-align: left;
-  max-width: 25rem;
-  margin: 1rem auto ;
-  line-height: 1.4rem;
-  font-size: 1.1rem;
-  color:rgb(68, 68, 68);
-  /* border:solid red 1px; */
+.actions button:hover {
+  background-color: #ff0000;
 }
+
+.actions a:hover {
+  background-color: #1f569e;
+}
+
+

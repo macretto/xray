@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./ExamItem.module.css";
 
-const ExamItem = ({ exam }) => {
+const ExamItem = ({ exam, handlerDelete }) => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -90,7 +90,7 @@ const ExamItem = ({ exam }) => {
           <p className={styles.description}>{data.keyFindings}</p>
         </div>
         <div className={styles.actions}>
-          <Link to="/">Delete</Link>
+          <button className={styles.delete} onClick={handlerDelete}>Delete</button>
           <Link to={`update`}> Update </Link>
         </div>
       </div>
