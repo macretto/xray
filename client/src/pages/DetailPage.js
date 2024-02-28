@@ -1,10 +1,11 @@
 import ExamItem from "../components/ExamItem";
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import ExamForm from "../components/ExamForm";
+import UpdateForm from "../components/UpdateForm";
 
 const DetailPage = () => {
   const [close, setClose] = useState(false);
+
   const { examId } = useParams(); //param passed to ExamItem component for rendering
   const navigateTo = useNavigate();
 
@@ -34,13 +35,13 @@ const DetailPage = () => {
     }
   };
 
+
   const closeHandler = () => {
     setClose(() => !close);
   };
 
   return (
     <div style={{ textAlign: "center" }}>
-
       {!close ? (
         <h1 style={{ color: "rgb(68, 68, 68)" }}>Patient Details </h1> && (
           <ExamItem
@@ -50,11 +51,13 @@ const DetailPage = () => {
           />
         )
       ) : (
-        <ExamForm
+        <UpdateForm
+  
+          examId={examId}
           buttonTitle="Update"
           title="Edit Exam"
           onClose={closeHandler}
-          method="patch"
+          method="PATCH"
         />
       )}
     </div>

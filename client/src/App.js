@@ -10,6 +10,7 @@ import ExamsLayout from "./pages/ExamRoot";
 import "./App.css";
 
 const router = createBrowserRouter([
+
   {
     path: "/",
     element: <RootLayout />,
@@ -24,7 +25,9 @@ const router = createBrowserRouter([
             index: true,
             element: <ExamsPage />,
           },
+          
           {
+            
             path: ":examId",
             element: <ExamsLayout />,
             children: [

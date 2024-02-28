@@ -2,19 +2,17 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./ExamForm.module.css";
 
-const ExamForm = ({ title, buttonTitle, onClose, method }) => {
+const ExamForm = () => {
   let navigateTo = useNavigate();
 
   const [patientName, setPatientName] = useState("");
   const [age, setAge] = useState("");
-  const [sex, setSex] = useState("n");
+  const [sex, setSex] = useState("N");
   const [bmi, setBmi] = useState("");
   const [zipCode, setZipCode] = useState("");
   const [brixiaScores, setBrixiaScores] = useState([]);
   const [imageURL, setImageURL] = useState("");
   const [keyFindings, setKeyFindings] = useState("");
-
-  const URL = "http://localhost:9000/api/exams";
 
   // function that randomlyy choses an id for examId and patientID
   //no id is assigned to them from mongo or node.
@@ -28,6 +26,8 @@ const ExamForm = ({ title, buttonTitle, onClose, method }) => {
     }
   };
 
+
+  const URL = `http://localhost:9000/api/exams`
   //submits new exam
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -53,9 +53,7 @@ const ExamForm = ({ title, buttonTitle, onClose, method }) => {
         "Content-Type": "application/json",
       },
     });
-    <button className={styles.btn} type="submit">
-      {buttonTitle}
-    </button>;
+
     const json = await response.json();
 
     if (!response.ok) {
@@ -76,7 +74,7 @@ const ExamForm = ({ title, buttonTitle, onClose, method }) => {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-      <h3>{title}</h3>
+      <h3>Update </h3>
 
       <p>
         <label htmlFor="patientName">Patient Name</label>
@@ -109,12 +107,11 @@ const ExamForm = ({ title, buttonTitle, onClose, method }) => {
         <span className={styles.sep}>M:</span>
         <input
           className={styles.sep}
-       
           id="sex2"
           type="radio"
           name="sex"
-          checked={sex === "M" || "m"}
           value="M"
+          checked={sex === "M" || "m"}
           onChange={(e) => setSex(e.target.value)}
           required
         />
@@ -125,8 +122,8 @@ const ExamForm = ({ title, buttonTitle, onClose, method }) => {
           id="sex3"
           type="radio"
           name="sex"
-          checked={sex === "N" || "n"}
           value="N"
+          checked={sex === "N" || "n"}
           onChange={(e) => setSex(e.target.value)}
           required
         />
@@ -170,7 +167,7 @@ const ExamForm = ({ title, buttonTitle, onClose, method }) => {
       <p>
         <label htmlFor="brixiaScores">BrixiaScores </label>
         <input
-        id="brixiaScores"
+          id="brixiaScores"
           type="text"
           value={brixiaScores.join(",")}
           onChange={(e) => setBrixiaScores(e.target.value.split(","))}
@@ -195,7 +192,7 @@ const ExamForm = ({ title, buttonTitle, onClose, method }) => {
           name="findings"
           rows="5"
           value={keyFindings}
-          onChange={(e) => setKeyFindings(e.tclosearget.value)}
+          onChange={(e) => setKeyFindings(e.target.value)}
           required
         />
       </p>
@@ -204,19 +201,12 @@ const ExamForm = ({ title, buttonTitle, onClose, method }) => {
       </p>
 
       <div className={styles.actions}>
-        {onClose ? <button onClick={onClose}> Go Back </button> : ""}
-
-        {method === "patch" ? (
-          <button className={styles.btn} onClick={onClose}>
-            UPDATE
-          </button>
-        ) : (
-          <button className={styles.btn} type="submit">
-            {buttonTitle}
-          </button>
-        )}
+        <button className={styles.btn} type="submit">
+          Create
+        </button>
       </div>
-      <div></div>
+
+      {patientName}
     </form>
   );
 };
