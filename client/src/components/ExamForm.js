@@ -3,21 +3,19 @@ import { useNavigate } from "react-router-dom";
 import styles from "./ExamForm.module.css";
 
 const ExamForm = () => {
-  let navigateTo= useNavigate();
+  let navigateTo = useNavigate();
 
   const [patientName, setPatientName] = useState("");
   const [age, setAge] = useState("");
-  const [sex, setSex] = useState("n");
+  const [sex, setSex] = useState("N");
   const [bmi, setBmi] = useState("");
   const [zipCode, setZipCode] = useState("");
   const [brixiaScores, setBrixiaScores] = useState([]);
   const [imageURL, setImageURL] = useState("");
   const [keyFindings, setKeyFindings] = useState("");
 
-  const URL = "http://localhost:9000/api/exams";
-
   // function that randomlyy choses an id for examId and patientID
-  //no id is assigned tothem from mongo or node.
+  //no id is assigned to them from mongo or node.
   const randomNumber = (type) => {
     let rand = Math.round(Math.random() * 50000000000);
 
@@ -28,6 +26,9 @@ const ExamForm = () => {
     }
   };
 
+
+  const URL = `http://localhost:9000/api/exams`
+  //submits new exam
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -52,13 +53,14 @@ const ExamForm = () => {
         "Content-Type": "application/json",
       },
     });
+
     const json = await response.json();
 
     if (!response.ok) {
       throw new Error("ERROR IN POST " + json);
     }
     if (response.ok) {
-      // setPatientName("");
+      setPatientName("");
       setAge("");
       setSex("");
       setBmi("");
@@ -72,12 +74,12 @@ const ExamForm = () => {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-      <h3>Create Exam</h3>
+      <h3>Update </h3>
 
       <p>
-        <label htmlFor="name">Patient Name</label>
+        <label htmlFor="patientName">Patient Name</label>
         <input
-          id="name"
+          id="patientName"
           type="text"
           name="patientName"
           value={patientName}
@@ -86,14 +88,14 @@ const ExamForm = () => {
         />
       </p>
 
-      <label htmlFor="name">Sex</label>
+      <label htmlFor="sex1">Sex</label>
       <div
         style={{ display: "flex", justifyContent: "center", width: "10rem" }}
       >
         <span>F:</span>
         <input
           className={styles.sep}
-          id="sex"
+          id="sex1"
           type="radio"
           name="sex"
           checked={sex === "F" || "f"}
@@ -105,11 +107,11 @@ const ExamForm = () => {
         <span className={styles.sep}>M:</span>
         <input
           className={styles.sep}
-          id="sex"
+          id="sex2"
           type="radio"
           name="sex"
-          checked={sex === "M" || "m"}
           value="M"
+          checked={sex === "M" || "m"}
           onChange={(e) => setSex(e.target.value)}
           required
         />
@@ -117,11 +119,11 @@ const ExamForm = () => {
         <span className={styles.sep}>N:</span>
         <input
           className={styles.sep}
-          id="sex"
+          id="sex3"
           type="radio"
           name="sex"
-          checked={sex === "N" || "n"}
           value="N"
+          checked={sex === "N" || "n"}
           onChange={(e) => setSex(e.target.value)}
           required
         />
@@ -151,7 +153,7 @@ const ExamForm = () => {
       </p>
 
       <p>
-        <label htmlFor="date">Zip Code </label>
+        <label htmlFor="zip">Zip Code </label>
         <input
           id="zip"
           type="text"
@@ -165,6 +167,7 @@ const ExamForm = () => {
       <p>
         <label htmlFor="brixiaScores">BrixiaScores </label>
         <input
+          id="brixiaScores"
           type="text"
           value={brixiaScores.join(",")}
           onChange={(e) => setBrixiaScores(e.target.value.split(","))}
@@ -202,11 +205,8 @@ const ExamForm = () => {
           Create
         </button>
       </div>
-      <div>
-        {patientName}-{age}-{bmi}-{brixiaScores}-{zipCode}-{keyFindings}-{sex}
-      </div>
-      {randomNumber()}
-      {(randomNumber("examId"), randomNumber("patientId"))}
+
+      {patientName}
     </form>
   );
 };

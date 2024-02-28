@@ -4,7 +4,7 @@ const NewExam = ()=> {
   
   return (
 
-    <ExamForm/>
+    <ExamForm title={"Create Exam"} buttonTitle="CREATE" method={"POST"}/>
   )
 }
 export default NewExam;

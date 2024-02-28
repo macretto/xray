@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+
 import styles from "./ExamItem.module.css";
 
-const ExamItem = ({ exam }) => {
+const ExamItem = ({ exam, handlerDelete, onClose }) => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -90,8 +90,9 @@ const ExamItem = ({ exam }) => {
           <p className={styles.description}>{data.keyFindings}</p>
         </div>
         <div className={styles.actions}>
-          <Link to="/">Delete</Link>
-          <Link to={`update`}> Update </Link>
+          <button className={styles.delete} onClick={handlerDelete}>Delete</button>
+          <button onClick={onClose}> Update </button>
+     
         </div>
       </div>
     </article>
