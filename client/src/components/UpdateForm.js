@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styles from "./ExamForm.module.css";
 
 const UpdateForm = ({ title, examId, onHandleUpdate }) => {
@@ -182,7 +182,9 @@ const UpdateForm = ({ title, examId, onHandleUpdate }) => {
       </p>
 
       <div className={styles.actions}>
-        <Link to={"/exams/"}>BACK</Link>
+      <button type="submit" className={styles.btn}>
+          Go back
+        </button>
 
         <button type="submit" className={styles.btn} onClick={onHandleUpdate}>
           Update

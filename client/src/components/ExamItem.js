@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
-import Dialog from "./Pagination";
 import styles from "./ExamItem.module.css";
 
 const ExamItem = ({ exam, handlerDelete, onClose }) => {
   const [data, setData] = useState(null);
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
