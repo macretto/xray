@@ -85,8 +85,7 @@ const ExamsList = ({ items, searchTerm }) => {
                 </div>
 
                 <div className={styles.titles}>
-                  <h4>created</h4>
-<                  
+                  <h4>created</h4>                  
                   <span>{convertDate(exam.updatedAt)}</span>
                 </div>
               </div>
