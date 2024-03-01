@@ -6,7 +6,7 @@ const Navbar = () => {
     <header className={styles.navbar}>
       <nav className={styles.navbarContainer}>
         <Link too="/" className={styles.navbarLogo}>
-          Surgeon Generals
+        DocWave 🌊
         </Link>
         <div className={styles.navbarLinks}>
           <ul className={styles.links}>
@@ -15,7 +15,7 @@ const Navbar = () => {
             </NavLink>
 
             <NavLink className={styles.link} to="/exams/new">
-            Create
+            Admin
             </NavLink>
           </ul>
         </div>

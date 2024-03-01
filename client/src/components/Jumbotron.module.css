@@ -40,8 +40,9 @@
     width: 80%;
     margin: 0 auto;
   font-size: 1.5rem;
-
+  
   line-height: 1.6;
+  white-space: pre-wrap;
 }
 
 @media screen and (max-width: 762px) {

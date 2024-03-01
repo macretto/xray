@@ -10,12 +10,13 @@ const Jumbotron = () => {
           <p className={styles.subtitle}>
             Where technology and medicine coexist to provide you the best treatment.
           </p>
-          <p className={styles.info}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-            luctus eros ut ligula congue, id dignissim nunc tempor. Nullam
-            efficitur tellus vel justo rutrum, eget dignissim magna dapibus.
-            Donec quis quam non velit feugiat viverra. Integer ut justo tellus.
-          </p>
+          <pre className={styles.info}>
+          DocWave 🌊 isn't just an app; it's a revolutionary wave of support for doctors on the frontline of COVID-19. 
+          With the power of CRUD wizardry (Create, Read, Update, Delete), DocWave empowers doctors to seamlessly 
+          intake, track, diagnose, and record every ripple in the COVID-19 journey.<br/><br/>
+
+          A dynamic webapp born from the collaboration of Hack.Diversity and the Surgeon General's team! 🚀
+          </pre>
         </div>
       </div>
     </>
