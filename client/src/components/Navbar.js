@@ -14,8 +14,8 @@ const Navbar = () => {
               Exams
             </NavLink>
 
-            <NavLink className={styles.link} to="/about">
-              About
+            <NavLink className={styles.link} to="/exams/new">
+            Create
             </NavLink>
           </ul>
         </div>

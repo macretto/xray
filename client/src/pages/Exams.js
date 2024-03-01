@@ -1,13 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+
 import ExamsList from "../components/ExamsList";
 import ExamsNav from "../components/ExamsNav";
-
+import ExamsFilter from "../components/ExamFilter";
 const API_URL = "http://localhost:9000/api/exams"; // Change this to your API endpoint
 const Exams = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+
+
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+
+
+  const handleSearch = (searchValue) => {
+    setSearchTerm(searchValue);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,8 +47,8 @@ const Exams = () => {
   return (
     <div style={{ textAlign: "center", margin: "2rem auto" }}>
       <ExamsNav />
-
-      <ExamsList items={data} />
+      <ExamsFilter onSearch={handleSearch} />
+      <ExamsList items={data}  searchTerm={searchTerm}/>
     </div>
   );
 };

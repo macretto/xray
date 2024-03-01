@@ -101,14 +101,16 @@ const ExamItem = ({ exam, handlerDelete, onClose }) => {
         <div className={styles.item}>
           <h3 className={styles.titles}>
             Last Updated:{" "}
-            <time>
+            <span>
               {data.updatedAt.toLocaleString().slice(5, 7)}/
-              {data.updatedAt.slice(8, 10)-1}/{data.updatedAt.slice(0, 4)}
-            </time>
+              {data.updatedAt.slice(8, 10) - 1}/{data.updatedAt.slice(0, 4)}
+            </span>
           </h3>
         </div>
         <div className={styles.actions}>
-          <button className={styles.delete} onClick={startDeleteHandler}>Delete </button>
+          <button className={styles.delete} onClick={startDeleteHandler}>
+            Delete{" "}
+          </button>
 
           <button className={styles.update} onClick={onClose}>
             {" "}

@@ -74,7 +74,7 @@ const ExamForm = () => {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-      <h3>Update </h3>
+      <h3>Create Exam</h3>
 
       <p>
         <label htmlFor="patientName">Patient Name</label>
@@ -206,7 +206,7 @@ const ExamForm = () => {
         </button>
       </div>
 
-      {patientName}
+
     </form>
   );
 };

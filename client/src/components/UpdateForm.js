@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import {useNavigate} from 'react-router-dom'
+import { useNavigate, Link } from "react-router-dom";
 import styles from "./ExamForm.module.css";
 
-const UpdateForm = ({ title, examId, onHandleUpdate}) => {
- const navigateTo = useNavigate()
+const UpdateForm = ({ title, examId, onHandleUpdate }) => {
+  const navigateTo = useNavigate();
   const [exam, setExam] = useState({
     patientName: "",
     age: "",
@@ -14,32 +14,30 @@ const UpdateForm = ({ title, examId, onHandleUpdate}) => {
     imageURL: "",
     keyFindings: "",
   });
- 
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:9000/api/exams/${examId}`);
+        const response = await fetch(
+          `http://localhost:9000/api/exams/${examId}`
+        );
         if (!response.ok) {
           throw new Error("Failed to fetch data");
         }
         const jsonData = await response.json();
         setExam(jsonData);
-     
       } catch (error) {
         console.error("ERROR:", error);
       }
     };
-  
+
     fetchData();
-
   }, [examId]);
-
 
   //handler to delete in details page
   const handleUpdate = async (event) => {
     event.preventDefault();
-    
-    
+
     try {
       const response = await fetch(
         `http://localhost:9000/api/exams/${examId}`,
@@ -50,23 +48,21 @@ const UpdateForm = ({ title, examId, onHandleUpdate}) => {
           },
           body: JSON.stringify(exam),
         }
-    
       );
 
       if (!response.ok) {
         throw new Error("Failed to update exam");
       }
-navigateTo('/exams')
+      navigateTo("/exams");
       // Exam successfully updated
       console.log("Exam update successfully");
-  
     } catch (error) {
       console.error("Error updating Exam", error.message);
     }
   };
   return (
     <form className={styles.form} onSubmit={handleUpdate}>
-      <h3>{title}</h3>
+      <h3 className={styles.hh}>Update Exam</h3>
 
       <p>
         <label htmlFor="patientName">Patient Name</label>
@@ -74,7 +70,7 @@ navigateTo('/exams')
           id="patientName"
           type="text"
           name="patientName"
-          defaultValue={examId ? exam.patientName : ''}
+          defaultValue={examId ? exam.patientName : ""}
           onChange={(e) => setExam({ ...exam, patientName: e.target.value })}
           required
         />
@@ -118,17 +114,15 @@ navigateTo('/exams')
         <label htmlFor="sex3">N</label>
       </div>
 
-     
       <label htmlFor="age">Age</label>
-        <input
-          id="age"
-          type="number"
-          name="age"
-          value={exam.age}
-          onChange={(e) => setExam({ ...exam, age: e.target.value })}
-          required
-        />
-   
+      <input
+        id="age"
+        type="number"
+        name="age"
+        value={exam.age}
+        onChange={(e) => setExam({ ...exam, age: e.target.value })}
+        required
+      />
 
       <p>
         <label htmlFor="bmi">Bmi </label>
@@ -186,21 +180,14 @@ navigateTo('/exams')
           required
         />
       </p>
-    
 
       <div className={styles.actions}>
-        
-      <button >
-        BACK
-          </button>
-      
-          <button type="submit" className={styles.btn} onClick={onHandleUpdate}>
-            Update
-          </button>
-      
+        <Link to={"/exams/"}>BACK</Link>
+
+        <button type="submit" className={styles.btn} onClick={onHandleUpdate}>
+          Update
+        </button>
       </div>
-
-
     </form>
   );
 };
