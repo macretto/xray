@@ -1,3 +1,13 @@
-ul{
-    padding: 0;
+* {
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  
+}
+
+html{
+
+}
+
+ul {
+  padding: 0;
 }

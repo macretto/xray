@@ -1,11 +1,13 @@
 .items {
-  max-width: 50rem;
+  max-width: 60rem;
+  justify-content: center;
   margin: 2rem auto;
   text-align: center;
-
+  display: flex;
   border-radius: 9px;
   padding: 1rem;
   box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.08);
+  flex-wrap: wrap;
 }
 
 .items:hover {
@@ -19,11 +21,29 @@
   color: rgb(128, 128, 128);
 }
 
-.items img {
-  width: 50%;
+.container {
+  text-align: left;
+  max-width: 25rem;
+  margin: 0 auto;
+}
 
+.items img {
+  max-width: 45%;
   border-radius: 7px;
   object-fit: cover;
+}
+
+@media screen and (max-width: 762px) {
+  .items img {
+    max-width: 100%;
+
+    /* object-fit: cover; */
+    object-fit: cover;
+  }
+
+  .container {
+    float: left;
+  }
 }
 
 /* in updatePage */
@@ -35,6 +55,14 @@
   font-size: 1.1rem;
   color: rgb(68, 68, 68);
   /* border:solid red 1px; */
+}
+
+.item .titles {
+  color: rgba(20, 19, 19, 0.836);
+}
+
+.item h3 span{
+  color: rgb(109, 108, 108);
 }
 
 .actions button,
@@ -59,20 +87,20 @@
   cursor: pointer;
 }
 
-.actions button {
+.actions .delete {
   background-color: #c01616;
 }
-/* buttons hover effects*/
 
+ /* buttons hover effects*/
 .actions button:hover,
 .actions a:hover {
   transition: 300ms ease-in-out;
 }
 
-.actions button:hover {
+.actions .delete:hover {
   background-color: #ff0000;
 }
 
-.actions a:hover {
+.actions .update:hover {
   background-color: #1f569e;
 }

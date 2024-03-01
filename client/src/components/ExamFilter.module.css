@@ -1,0 +1,10 @@
+input {
+  font: inherit;
+  padding: 0.5rem;
+  opacity: 0.5;
+  border-radius: 7px;
+}
+
+label {
+  color: #636363;
+}

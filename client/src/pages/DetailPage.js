@@ -35,30 +35,21 @@ const DetailPage = () => {
     }
   };
 
-
   const closeHandler = () => {
     setClose(() => !close);
   };
 
   return (
     <div style={{ textAlign: "center" }}>
+      <h1 style={{ color: "rgb(68, 68, 68)" }}>Patient Details </h1>
       {!close ? (
-        <h1 style={{ color: "rgb(68, 68, 68)" }}>Patient Details </h1> && (
-          <ExamItem
-            exam={examId}
-            handlerDelete={handleDelete}
-            onClose={closeHandler}
-          />
-        )
-      ) : (
-        <UpdateForm
-  
-          examId={examId}
-          buttonTitle="Update"
-          title="Edit Exam"
+        <ExamItem
+          exam={examId}
+          handlerDelete={handleDelete}
           onClose={closeHandler}
-          method="PATCH"
         />
+      ) : (
+        <UpdateForm examId={examId} />
       )}
     </div>
   );
