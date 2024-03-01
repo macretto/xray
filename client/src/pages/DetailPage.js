@@ -35,9 +35,6 @@ const DetailPage = () => {
     }
   };
 
-
-
-
   const closeHandler = () => {
     setClose(() => !close);
   };

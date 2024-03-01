@@ -1,7 +1,8 @@
+import './ExamFilter.module.css'
 
 
-const ExamFilter = ({onSearch }) => {
-    return (
+const ExamFilter = ({ onSearch }) => {
+  return (
     <div>
       <label htmlFor="search">Filter by Name: </label>
       <input

@@ -37,7 +37,7 @@ const Exams = () => {
   }, []);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div style={{textAlign:'center', margin: '3rem 0'}}>Loading...</div>;
   }
 
   if (error) {
