@@ -1,6 +1,5 @@
 import './ExamFilter.module.css'
 
-
 const ExamFilter = ({ onSearch }) => {
   return (
     <div>

@@ -90,8 +90,8 @@
 .actions .delete {
   background-color: #c01616;
 }
-/* buttons hover effects*/
 
+ /* buttons hover effects*/
 .actions button:hover,
 .actions a:hover {
   transition: 300ms ease-in-out;

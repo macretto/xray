@@ -1,5 +1,4 @@
 .navbar {
-
   background-color: #374a9c;
   color: white;
   padding: 10px 0;
@@ -37,6 +36,3 @@
 .navbarLinks li:hover {
   color: lightgray;
 }
-
-
-

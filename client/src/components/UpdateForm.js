@@ -26,6 +26,7 @@ const UpdateForm = ({ title, examId, onHandleUpdate }) => {
         }
         const jsonData = await response.json();
         setExam(jsonData);
+
       } catch (error) {
         console.error("ERROR:", error);
       }

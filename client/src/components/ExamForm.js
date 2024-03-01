@@ -205,8 +205,6 @@ const ExamForm = () => {
           Create
         </button>
       </div>
-
-
     </form>
   );
 };
