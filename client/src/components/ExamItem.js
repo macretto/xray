@@ -103,7 +103,10 @@ const ExamItem = ({ exam, handlerDelete, onClose }) => {
             Last Updated:{" "}
             <span>
               {data.updatedAt.toLocaleString().slice(5, 7)}/
-              {data.updatedAt.slice(8, 10) - 1}/{data.updatedAt.slice(0, 4)}
+              {data.updatedAt.slice(8, 10) - 1 === 0
+                ? "01"
+                : data.updatedAt.slice(8, 10) - 1}
+              /{data.updatedAt.slice(0, 4)}
             </span>
           </h3>
         </div>
