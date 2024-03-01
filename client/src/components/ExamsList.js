@@ -19,7 +19,7 @@ const ExamsList = ({ items, searchTerm }) => {
       return new Intl.DateTimeFormat("en-US", options).format(date);
     } catch (error) {
       console.error("Error parsing date:", error);
-      return "No Date";
+      return "No Date added";
     }
   };
   // Filter items only if searchTerm is provided
@@ -86,7 +86,7 @@ const ExamsList = ({ items, searchTerm }) => {
 
                 <div className={styles.titles}>
                   <h4>created</h4>
-                  no date
+                  
                   <span>{convertDate(exam.updatedAt)}</span>
                 </div>
               </div>
