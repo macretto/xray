@@ -1,15 +1,13 @@
 import { Link } from "react-router-dom";
-
+import ExamFilter from "./ExamFilter";
 import styles from "./ExamsNav.module.css";
 
-function ExamsNav() {
+function ExamsNav({ onSearch }) {
   return (
     <header className={styles.header}>
       <nav className={styles.nav}>
-        <div className={styles.searchbox}>
-          <label>Search </label>
-          <input type="text" />
-        </div>
+        {/* Data passed from exams with data to filter in ExamFilter component */}
+        <ExamFilter onSearch={onSearch} />
         <ul>
           <li className={styles.link}>
             <Link to="/exams/new" className={styles.btn}>

@@ -1,9 +1,9 @@
 
 
 const ExamFilter = ({onSearch }) => {
-  return (
+    return (
     <div>
-      <label htmlFor="search">Search:</label>
+      <label htmlFor="search">Filter by Name: </label>
       <input
         type="text"
         id="search"

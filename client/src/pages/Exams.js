@@ -2,17 +2,17 @@ import React, { useEffect, useState } from "react";
 
 import ExamsList from "../components/ExamsList";
 import ExamsNav from "../components/ExamsNav";
-import ExamsFilter from "../components/ExamFilter";
+
 const API_URL = "http://localhost:9000/api/exams"; // Change this to your API endpoint
 const Exams = () => {
   const [searchTerm, setSearchTerm] = useState("");
-
-
+  //states
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-
+  //will handle the search of the value evaluated to be filtered
+  //received a parameter as data
   const handleSearch = (searchValue) => {
     setSearchTerm(searchValue);
   };
@@ -46,9 +46,8 @@ const Exams = () => {
 
   return (
     <div style={{ textAlign: "center", margin: "2rem auto" }}>
-      <ExamsNav />
-      <ExamsFilter onSearch={handleSearch} />
-      <ExamsList items={data}  searchTerm={searchTerm}/>
+      <ExamsNav onSearch={handleSearch} />
+      <ExamsList items={data} searchTerm={searchTerm} />
     </div>
   );
 };
