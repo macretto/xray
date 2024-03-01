@@ -98,7 +98,7 @@ const ExamForm = () => {
           id="sex1"
           type="radio"
           name="sex"
-          checked={sex === "F" || "f"}
+          checked={sex === "F"}
           value="F"
           onChange={(e) => setSex(e.target.value)}
           required
@@ -111,7 +111,7 @@ const ExamForm = () => {
           type="radio"
           name="sex"
           value="M"
-          checked={sex === "M" || "m"}
+          checked={sex === "M"}
           onChange={(e) => setSex(e.target.value)}
           required
         />
@@ -123,7 +123,7 @@ const ExamForm = () => {
           type="radio"
           name="sex"
           value="N"
-          checked={sex === "N" || "n"}
+          checked={sex === "N"}
           onChange={(e) => setSex(e.target.value)}
           required
         />

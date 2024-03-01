@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import {useNavigate} from 'react-router-dom'
 import styles from "./ExamForm.module.css";
 
-const UpdateForm = ({ title, buttonTitle, onClose, method, examId, onHandleUpdate}) => {
+const UpdateForm = ({ title, examId, onHandleUpdate}) => {
  const navigateTo = useNavigate()
   const [exam, setExam] = useState({
     patientName: "",
     age: "",
-    sex: "N",
+    sex: null,
     bmi: "",
     zipCode: "",
     brixiaScores: [],
@@ -186,13 +186,13 @@ navigateTo('/exams')
           required
         />
       </p>
-      <p>
-        <span> Created on 02/23/2024</span>
-      </p>
+    
 
       <div className={styles.actions}>
         
-
+      <button >
+        BACK
+          </button>
       
           <button type="submit" className={styles.btn} onClick={onHandleUpdate}>
             Update
@@ -200,7 +200,7 @@ navigateTo('/exams')
       
       </div>
 
-   {exam.patientName}-{exam.age}-{examId}
+
     </form>
   );
 };

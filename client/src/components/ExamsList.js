@@ -1,20 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./ExamsList.module.css";
 import { Link } from "react-router-dom";
+import Pagination from "./Pagination"; // Import the EnhancedPagination component
 
 const ExamsList = ({ items }) => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 7; // Adjust the number of items per page as needed
+
+  // Logic to calculate current items based on currentPage
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
+
+  const onPageChange = (page) => {
+    setCurrentPage(page);
+  };
+
+  const convertDate = (dateString) => {
+    try {
+      const date = new Date(dateString);
+      const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+      return new Intl.DateTimeFormat('en-US', options).format(date);
+    } catch (error) {
+      console.error('Error parsing date:', error);
+      return 'No Date';
+    }
+  };
+
   return (
     <div className={styles.exams}>
-      <h1>Exams</h1>
-
+   <h1 style={{ color: "rgb(68, 68, 68)" }}>Exams </h1>
+      <Pagination
+        itemsPerPage={itemsPerPage}
+        totalItems={items.length}
+        onPageChange={onPageChange}
+        currentPage={currentPage}
+      />
       <ul className={styles.list}>
-        {items.map((exam) => (
+        {currentItems.map((exam) => (
           <li key={exam._id} className={styles.item}>
             <Link to={`/exams/${exam._id}`}>
-            <img src={exam.imageURL} alt={exam.imageURL} />
+              <img src={exam.imageURL} alt={exam.imageURL} />
               <div className={styles.content}>
-           
-                <div className={styles.titles} style={{width:'3rem'}}>
+                <div className={styles.titles} style={{ maxWidth: "4.5rem" }}>
                   <h4>Patient: </h4>
                   <p>{exam.patientName}</p>
                 </div>
@@ -36,10 +64,15 @@ const ExamsList = ({ items }) => {
                   <h4>ZipCode</h4>
                   <p>{exam.zipCode}</p>
                 </div>
-                <div className={styles.titles} style={{width:'10rem'}}>
+                <div className={styles.titles} style={{ width: "10rem" }}>
                   <h4>Findings</h4>
-                  <p>{exam.keyFindings.slice(0,60)}... <span style={{color:'blue', boxShadow:'none'}} > see more</span></p>
-                  
+                  <p>
+                    {exam.keyFindings.slice(0, 60)}...{" "}
+                    <span className={styles.more}>
+                      {" "}
+                      see more
+                    </span>
+                  </p>
                 </div>
                 <div className={styles.titles}>
                   <h4>BrixiaScores</h4>
@@ -48,17 +81,22 @@ const ExamsList = ({ items }) => {
 
                 <div className={styles.titles}>
                   <h4>created</h4>
-                  <time>02/28/2024</time>
+                  <time>{convertDate((exam.updatedAt))}</time>
+                
                 </div>
               </div>
             </Link>
           </li>
         ))}
       </ul>
+
+      <Pagination
+        itemsPerPage={itemsPerPage}
+        totalItems={items.length}
+        onPageChange={onPageChange}
+        currentPage={currentPage}
+      />
     </div>
-
-
-    
   );
 };
 

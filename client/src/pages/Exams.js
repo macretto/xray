@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ExamsList from "../components/ExamsList";
+import ExamsNav from "../components/ExamsNav";
 
 const API_URL = "http://localhost:9000/api/exams"; // Change this to your API endpoint
 const Exams = () => {
@@ -36,15 +37,9 @@ const Exams = () => {
   }
 
   return (
-    <div style={{ textAlign: "center", margin:'2rem auto' }}>
-      
-      <Link to="/exams/new">
-        <button>Add Exam</button> 
-      </Link>
-   <label>Search</label>
-   <input type="text" />
-     
-    
+    <div style={{ textAlign: "center", margin: "2rem auto" }}>
+      <ExamsNav />
+
       <ExamsList items={data} />
     </div>
   );

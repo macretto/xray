@@ -1,11 +1,20 @@
 import { useEffect, useState } from "react";
-
+import Dialog from "./Pagination";
 import styles from "./ExamItem.module.css";
 
 const ExamItem = ({ exam, handlerDelete, onClose }) => {
   const [data, setData] = useState(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  function startDeleteHandler() {
+    const proceed = window.confirm("Are you sure?");
+
+    if (proceed) {
+      handlerDelete();
+    }
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -89,10 +98,22 @@ const ExamItem = ({ exam, handlerDelete, onClose }) => {
           <h3 className={styles.titles}>Key Findings:</h3>
           <p className={styles.description}>{data.keyFindings}</p>
         </div>
+        <div className={styles.item}>
+          <h3 className={styles.titles}>
+            Last Updated:{" "}
+            <time>
+              {data.updatedAt.toLocaleString().slice(5, 7)}/
+              {data.updatedAt.slice(8, 10)-1}/{data.updatedAt.slice(0, 4)}
+            </time>
+          </h3>
+        </div>
         <div className={styles.actions}>
-          <button className={styles.delete} onClick={handlerDelete}>Delete</button>
-          <button onClick={onClose}> Update </button>
-     
+          <button className={styles.delete} onClick={startDeleteHandler}>Delete </button>
+
+          <button className={styles.update} onClick={onClose}>
+            {" "}
+            Update{" "}
+          </button>
         </div>
       </div>
     </article>
